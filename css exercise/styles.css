@@ -1,0 +1,26 @@
+
+
+/** General Layout **/
+body {
+    font-family: sans-serif;
+    background-color: rgba(168, 168, 168, 0.607);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    padding: 30px;
+    background-color: hsla(0, 0%, 100%, 0.95); 
+    border-radius: 3px;
+
+}
+
+h1 {
+    background-color: rgb(1, 1, 45);
+    color: rgba(255, 255, 255, 0.95);
+    position: fixed; /* Header in a fixed position */
+    padding: 1rem;
+}
