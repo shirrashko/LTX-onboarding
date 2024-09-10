@@ -1,34 +1,42 @@
-
 <!doctype html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>My test page</title>
-    <link rel="stylesheet" href="styles/style.css" />
-  </head>
-  <body>
-    <div class="container">
-        <!-- User's Information Section -->
-        <h1>User Information</h1>
 
-        <h2>Users</h2>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>User Information</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
 
-        <div className="outer-table">
-            <div className="inner-table">
-                    <!--table of users-->
-                        <!-- Information Section -->
-                <h2>Contact Information</h2>
-                <p><strong>Name:</strong> Jennie Nichols</p>
-                <p><strong>Email:</strong> jennie.nichols@example.com</p>
-                <p><strong>Phone:</strong> (272) 790-0888</p>
-                <p><strong>City:</strong> Billings</p>
-                <p><strong>State:</strong> Michigan</p>
-                <p><strong>Country:</strong> United States</p>
-            </div>
-        </div>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>User Information</h1>
     </div>
 
-  </body>
-</html>
+    <div class="info-table">
+      <h2>Users</h2>
+      <table class="user-info">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+          </tr>
+        </thead>
+        <tbody id="user-table-body">
+        </tbody>
+      </table>
 
+    </div>
+  </div>
+  </div>
+
+  <!-- Link to external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+
+</html>
