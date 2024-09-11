@@ -21,33 +21,64 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
+    font-size: 100%;
     text-align: center;
     background-color: rgb(0, 0, 45);
     color: rgba(255, 255, 255, 0.95);
-    padding: 1rem;
+    padding: 0.8rem;
     box-shadow: 1px 1px 15px -3px rgba(0, 0, 0, 0.5); 
 }
 
-.info-table > h2 {
+.table-container {
+    border-radius: 4px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 1px 1px 15px -3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 90px;
+    max-height: 250px; /* Reduced height to show fewer rows at a time */
+}
+
+.user-info-container {
+    margin-top: 120px; 
+    margin-bottom: 40px;
+}
+
+.user-info-container h2 {
     font-size: 30px;
     color:rgb(0, 0, 45);
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.user-info {
+.user-info-table {
     width: 100%; /* redundant? */
     border-collapse: collapse;
+    max-height: 200px; /* Set the maximum height for the table */
+    overflow-y: auto; /* Add a vertical scrollbar to the table */
+    display: block;
 }
 
-.user-info th, .user-info td {
+.user-info-table th, .user-info-table td {
     border: 1px solid black;
     padding: 8px;
     text-align: center;
 }
 
-.user-info th {
+.user-info-table th {
     background-color: rgb(0, 0, 45);
     color: rgba(255, 255, 255, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+
+.user-info-table th:hover {
+    background-color: rgba(0, 0, 45, 0.8);
+}
+
+.user-info-table td:hover {
+    cursor: pointer;
 }
 
 footer {
@@ -57,6 +88,31 @@ footer {
     text-align: center;
     background-color: rgb(0, 0, 45);
     color: rgba(255, 255, 255, 0.95);
-    padding: 1rem;
+    padding: 0.8rem;
     box-shadow: 1px -1px 15px -3px rgba(0, 0, 0, 0.5); 
+}
+
+
+/* Zebra striping - alternating colors */
+.user-info-table tr:nth-child(even) {
+    background-color: rgba(224, 255, 255, 0.5);
+}
+  
+  .user-info-talbe tr:nth-child(odd) {
+    background-color: rgba(173, 216, 230, 0.5);
+}
+
+@media (max-width: 768px) { 
+    /* For mobile phones: */
+    header {
+        padding: 0.5rem;
+        font-size: 80%;
+        background-color: rgb(0, 0, 75);
+    }
+
+    footer {
+        padding: 0.5rem;
+        font-size: 80%;
+        background-color: rgb(0, 0, 75);
+    }
 }
