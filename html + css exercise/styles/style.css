@@ -1,120 +1,117 @@
 html {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
-
 body {
-    background-color: hsla(0, 0%, 83%, 0.358);
-    margin: 0;
+  background-color: hsla(0, 0%, 83%, 0.358);
+  margin: 0;
 }
 
 .container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    font-size: 100%;
-    text-align: center;
-    background-color: rgb(0, 0, 45);
-    color: rgba(255, 255, 255, 0.95);
-    padding: 0.8rem;
-    box-shadow: 1px 1px 15px -3px rgba(0, 0, 0, 0.5); 
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 100%;
+  text-align: center;
+  background-color: rgb(0, 0, 45);
+  color: rgba(255, 255, 255, 0.95);
+  padding: 0.8rem;
+  box-shadow: 1px 1px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
 .table-container {
-    border-radius: 4px;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 1px 1px 15px -3px rgba(0, 0, 0, 0.5);
-    margin-bottom: 100px;
-    max-height: 400px; /* Control how many data rows are seen at a time */
+  border-radius: 4px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 1px 1px 15px -3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 100px;
+  max-height: 400px; /* Control how many data rows are seen at a time */
 }
 
 .user-info-container {
-    margin-top: 120px; 
-    margin-bottom: 90px;
+  margin-top: 120px;
+  margin-bottom: 90px;
 }
 
 .user-info-container h2 {
-    font-size: 30px;
-    color:rgb(0, 0, 45);
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 30px;
+  color: rgb(0, 0, 45);
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .user-info-table {
-    width: 100%;
-    border-collapse: collapse;
-    max-height: 400px; /* Set the maximum height for the table */
-    font-size: 15px;
-    display: block;
-    overflow-y: hidden;
-    overflow-y: auto;
+  width: 100%;
+  border-collapse: collapse;
+  max-height: 400px; /* Set the maximum height for the table */
+  font-size: 15px;
+  display: block;
+  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .user-info-table th, .user-info-table td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
 }
 
 .user-info-table th {
-    background-color: rgb(0, 0, 45);
-    color: rgba(255, 255, 255, 0.9);
-    position: sticky;
-    top: 0;
+  background-color: rgb(38, 1, 83);
+  position: sticky;
+  top: 0;
 }
 
 .user-info-table th:hover {
-    background-color: rgb(67, 47, 79);
+  background-color: rgb(67, 47, 79);
 }
 
 .user-info-table td:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    background-color: rgb(0, 0, 45);
-    color: rgba(255, 255, 255, 0.95);
-    padding: 0.8rem;
-    box-shadow: 1px -1px 15px -3px rgba(0, 0, 0, 0.5); 
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(0, 0, 45);
+  color: rgba(255, 255, 255, 0.95);
+  padding: 0.8rem;
+  box-shadow: 1px -1px 15px -3px rgba(0, 0, 0, 0.5);
 }
-
 
 /* Zebra striping - alternating colors */
 .user-info-table tr:nth-child(even) {
-    background-color: rgba(224, 255, 255, 0.5);
+  background-color: rgba(224, 255, 255, 0.5);
 }
-  
-  .user-info-talbe tr:nth-child(odd) {
-    background-color: rgba(173, 216, 230, 0.5);
+
+.user-info-table tr:nth-child(odd) {
+  background-color: rgba(173, 216, 230, 0.5);
 }
 
 /* Responsive design */
-@media (max-width: 768px) { 
-    /* For mobile phones: */
-    header {
-        padding: 0.5rem;
-        font-size: 80%;
-        background-color: rgb(0, 0, 75);
-    }
-
-    footer {
-        padding: 0.5rem;
-        font-size: 80%;
-        background-color: rgb(0, 0, 75);
-    }
+@media (max-width: 768px) {
+  /* For mobile phones: */
+  header {
+    padding: 0.5rem;
+    font-size: 80%;
+    background-color: hsla(240, 100%, 15%, 0.331);
+  }
+  footer {
+    padding: 0.5rem;
+    font-size: 80%;
+    background-color: hsla(240, 100%, 15%, 0.331);
+  }
 }
 
+/*# sourceMappingURL=style.css.map */
