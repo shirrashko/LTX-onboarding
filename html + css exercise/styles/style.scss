@@ -1,5 +1,5 @@
 /* Global Styles */
-$table-cell-border: 1px solid black;
+$table-cell-border: 3px solid black;
 $box-shadow: 1px 1px 15px -3px rgba(0, 0, 0, 0.5);
 
 $primary-color: rgb(0, 0, 45);
@@ -7,6 +7,8 @@ $background-color: hsla(0, 0%, 83%, 0.358);
 $table-header-color: rgb(38, 1, 83);
 $table-hover-color: rgb(67, 47, 79);
 $max-table-rows-height: 50vh;
+$even-color: rgba(224, 255, 255, 0.5);
+$odd-color: rgba(173, 216, 230, 0.5);
 
 $breakpoint-mobile: 768px;
 $mobile-primary-color: hsla(319, 48%, 47%, 0.331);
@@ -91,15 +93,16 @@ header {
 
     td:hover {
         cursor: pointer;
+        background-color: ($even-color, 0.3);
     }
 
     /* Zebra striping - alternating colors */
     tr:nth-child(even) {
-        background-color: rgba(224, 255, 255, 0.5);
+        background-color: $even-color;
     }
 
     tr:nth-child(odd) {
-        background-color: rgba(173, 216, 230, 0.5);
+        background-color: $odd-color;
     }
 }
 
@@ -129,6 +132,7 @@ footer {
         background-color: $mobile-primary-color;
     }
 
+
     /* Adjust Table for Mobile */
     .user-info-table {
         font-size: 12px; /* Smaller font for smaller screens */
@@ -137,6 +141,14 @@ footer {
 
         th, td {
             padding: 5px; /* Smaller padding */
+        }
+
+        th {
+            background-color: hsl(350, 39%, 53%);
+
+            &:hover {
+                background-color: hsl(350, 39%, 43%);
+            }
         }
 
         /* Zebra striping - alternating colors */
