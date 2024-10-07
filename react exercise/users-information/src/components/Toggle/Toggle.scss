@@ -1,0 +1,50 @@
+@import "../../styles/variables.scss";
+
+.toggle {
+  text-align: center;
+  margin: 20px;
+
+  .toggle-button {
+    display: flex;
+    width: 58px;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center; /* Ensures the icons are vertically centered */
+    
+    border-radius: 999px;
+    border: 1px solid var(--semantic-bg-neutral-inverse, #E6E7E9);
+    background: var(--semantic-bg-secondary, #FFF);
+    position: relative;
+    cursor: pointer;
+
+    .list-icon,
+    .grid-icon {
+      height: 14px;
+      width: 14px;
+      padding: 5px;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    /* Gray ellipse background */
+    .toggle-ellipse {
+      position: absolute;
+      top: 5px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: hsl(0, 0%, 88%, 0.5);
+      transition: left 0.4s ease; /* Smooth transition */
+    }
+
+    /* Moves the ellipse based on active state */
+    &.list-active .toggle-ellipse {
+      left: 5px; /* Position for List view */
+    }
+
+    &.grid-active .toggle-ellipse {
+      left: 39px; /* Position for Grid view */
+    }
+  }
+}
