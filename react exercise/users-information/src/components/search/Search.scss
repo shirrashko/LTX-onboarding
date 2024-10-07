@@ -1,0 +1,56 @@
+
+
+// .search-icon {
+//     width: 16px;
+//     height: 16px;
+// }
+
+// .search-input {
+//     color: var(--semantic-fg-tertiary, #D0D1D3);
+//     text-align: center;
+    
+//     font-family: "Brown LL";
+//     font-size: 14px;
+//     font-style: normal;
+//     font-weight: 400;
+//     line-height: 18px;
+//     letter-spacing: -0.25px;
+// }
+
+.search {
+    position: relative; /* Allows you to position the icon inside the input */
+  
+    .search-input {
+      width: 100%; /* Ensure input takes full width of parent */
+      padding-left: 30px; /* Add padding to prevent text from overlapping with the search icon */
+      font-family: "Brown LL"; /* Apply the correct font */
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 18px;
+      letter-spacing: -0.25px;
+      text-align: center; /* Center align the text */
+      color: var(--semantic-fg-tertiary, #D0D1D3);
+  
+      /* Placeholder styling */
+      &::placeholder {
+        color: var(--semantic-fg-tertiary, #D0D1D3);
+        text-align: center;
+        font-family: "Brown LL"; /* Same font for placeholder */
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: -0.25px;
+      }
+    }
+  
+    .search-icon {
+      position: absolute;
+      left: 8px; /* Position the icon inside the input */
+      top: 50%;
+      transform: translateY(-50%); /* Vertically center the icon */
+      width: 16px;
+      height: 16px;
+    }
+  }
