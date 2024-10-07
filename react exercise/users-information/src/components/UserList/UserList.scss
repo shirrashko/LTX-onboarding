@@ -1,0 +1,147 @@
+@import 'Variables.scss';
+
+/* Global Styles */
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: $container-padding;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    font-size: $header-font-size;
+    text-align: center;
+    background-color: $primary-color;
+    color: $secondary-text-color;
+    padding: $header-footer-padding;
+    box-shadow: $box-shadow;
+}
+
+.table-container {
+    border-radius: 4px;
+    padding: $table-padding;
+    background-color: white;
+    box-shadow: $box-shadow;
+    margin-bottom: 100px;
+    max-height: $max-table-rows-height;
+    overflow-y: auto;
+    overflow-x: auto; /* Horizontal scrolling for small screens */
+    width: 100%; /* Make sure the table container takes up full width */
+}
+
+.user-info-container {
+    margin-top: 120px; 
+    margin-bottom: 90px;
+
+    h2 {
+        font-size: 30px;
+        color: $primary-color;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+.user-info-table {
+    width: 100%; /* Ensure table takes full width */
+    border-collapse: collapse;
+    font-size: $table-font-size;
+
+    th, td {
+        border: $table-cell-border;
+        padding: $table-cell-padding;
+        text-align: center;
+    }
+
+    th {
+        background-color: $table-header-color;
+        color: white;
+        position: sticky;
+        top: 0;
+
+        &:hover {
+            background-color: $table-hover-color;
+        }
+    }
+
+    td:hover {
+        cursor: pointer;
+        background-color: $table-hover-bg-color;
+    }
+
+    /* Zebra striping - alternating colors */
+    tr:nth-child(even) {
+        background-color: $even-color;
+    }
+
+    tr:nth-child(odd) {
+        background-color: $odd-color;
+    }
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    text-align: center;
+    background-color: $primary-color;
+    color: $secondary-text-color;
+    padding: $header-footer-padding;
+    box-shadow: $footer-shadow;
+}
+
+/* Responsive design */
+@media (max-width: $breakpoint-mobile) { 
+    /* Adjust Header and Footer */
+    header {
+        padding: $mobile-header-footer-padding;
+        font-size: $mobile-font-size;
+        background-color: $mobile-primary-color;
+    }
+
+    footer {
+        padding: $mobile-header-footer-padding;
+        font-size: $mobile-font-size;
+        background-color: $mobile-primary-color;
+    }
+
+    /* Adjust Table for Mobile */
+    .user-info-table {
+        font-size: $mobile-font-size-small; /* Smaller font for smaller screens */
+        overflow-x: auto; /* Horizontal scrolling for small screens */
+    }
+
+    th, td {
+        padding: 5px; /* Smaller padding */
+    }
+
+    th {
+        background-color: $mobile-header-hover-color;
+
+        &:hover {
+            background-color: $mobile-header-hover-color-active;
+        }
+    }
+
+    /* Zebra striping - alternating colors */
+    tr:nth-child(even) {
+        background-color: rgb(247, 232, 235);
+    }
+
+    tr:nth-child(odd) {
+        background-color: rgb(250, 241, 243);
+    }
+
+    .table-container {
+        padding: $mobile-table-padding; /* Less padding for mobile view */
+    }
+
+    .user-info-container h2 {
+        font-size: 20px; /* Smaller font for smaller screens */
+    }
+}

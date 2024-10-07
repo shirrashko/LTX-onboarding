@@ -1,0 +1,31 @@
+/* Variables */
+$table-cell-border: 3px solid black;
+$box-shadow: 1px 1px 15px -3px rgba(0, 0, 0, 0.5);
+
+$primary-color: rgb(0, 0, 45);
+$secondary-text-color: rgba(255, 255, 255, 0.95);
+$background-color: hsla(0, 0%, 83%, 0.358);
+$table-header-color: rgb(38, 1, 83);
+$table-hover-color: rgb(67, 47, 79);
+$footer-shadow: 1px -1px 15px -3px rgba(0, 0, 0, 0.5);
+
+$max-table-rows-height: 50vh;
+$even-color: rgba(224, 255, 255, 0.5);
+$odd-color: rgba(173, 216, 230, 0.5);
+
+$breakpoint-mobile: 768px;
+$mobile-primary-color: hsla(319, 48%, 47%, 0.331);
+$mobile-header-footer-padding: 0.5rem;
+$mobile-font-size: 80%;
+$mobile-table-padding: 10px;
+$mobile-font-size-small: 12px;
+$mobile-header-hover-color: hsl(350, 39%, 53%);
+$mobile-header-hover-color-active: hsl(350, 39%, 43%);
+
+$container-padding: 20px;
+$header-footer-padding: 0.8rem;
+$header-font-size: 100%;
+$table-font-size: 15px;
+$table-padding: 20px;
+$table-cell-padding: 8px;
+$table-hover-bg-color: rgba(209, 253, 253, 0.611);
