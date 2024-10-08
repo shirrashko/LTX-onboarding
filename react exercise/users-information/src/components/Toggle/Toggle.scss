@@ -1,50 +1,55 @@
 @import "../../styles/variables.scss";
 
+/* Variables for sizes and positions */
+$toggle-width: 58px;
+$toggle-padding: 5px;
+$ellipse-size: 24px;
+$grid-left-offset: 10px;
+
+/* Dynamically calculated positions */
+$list-left: $toggle-padding;
+$grid-left: $toggle-width - $ellipse-size + $toggle-padding;
+
 .toggle {
-  text-align: center;
-  margin: 20px;
+  display: flex;
+  width: $toggle-width;
+  padding: $toggle-padding;
+  justify-content: space-between;
+  border-radius: 999px;
+  border: 1px solid var(--semantic-bg-neutral-inverse, #E6E7E9);
+  background: var(--semantic-bg-secondary, #FFF);
+  position: relative;
+  cursor: pointer;
 
-  .toggle-button {
-    display: flex;
-    width: 58px;
-    padding: 5px;
-    justify-content: space-between;
-    align-items: center; /* Ensures the icons are vertically centered */
-    
-    border-radius: 999px;
-    border: 1px solid var(--semantic-bg-neutral-inverse, #E6E7E9);
-    background: var(--semantic-bg-secondary, #FFF);
-    position: relative;
-    cursor: pointer;
+  /* Styling for the icons */
+  .list-icon,
+  .grid-icon {
+    height: 14px;
+    width: 14px;
+    padding: $toggle-padding;
+    background: #fff;
+    flex-shrink: 0;
+  }
 
-    .list-icon,
-    .grid-icon {
-      height: 14px;
-      width: 14px;
-      padding: 5px;
-      background: #fff;
-      flex-shrink: 0;
-    }
+  /* Gray ellipse background */
+  .toggle-ellipse {
+    position: absolute;
+    top: 5px;
+    left: $list-left; /* Initial position for List view */
+    width: $ellipse-size;
+    height: $ellipse-size;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 88%, 0.5);
+    transition: left 0.4s ease; /* Smooth transition */
+  }
 
-    /* Gray ellipse background */
-    .toggle-ellipse {
-      position: absolute;
-      top: 5px;
-      left: 3px;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background-color: hsl(0, 0%, 88%, 0.5);
-      transition: left 0.4s ease; /* Smooth transition */
-    }
+  /* When in List view */
+  &.list-active .toggle-ellipse {
+    left: $list-left; /* Position for List view */
+  }
 
-    /* Moves the ellipse based on active state */
-    &.list-active .toggle-ellipse {
-      left: 5px; /* Position for List view */
-    }
-
-    &.grid-active .toggle-ellipse {
-      left: 39px; /* Position for Grid view */
-    }
+  /* When in Grid view */
+  &.grid-active .toggle-ellipse {
+    left: $grid-left; /* Position for Grid view */
   }
 }

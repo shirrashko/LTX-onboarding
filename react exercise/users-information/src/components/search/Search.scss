@@ -1,41 +1,38 @@
-
-
-// .search-icon {
-//     width: 16px;
-//     height: 16px;
-// }
-
-// .search-input {
-//     color: var(--semantic-fg-tertiary, #D0D1D3);
-//     text-align: center;
-    
-//     font-family: "Brown LL";
-//     font-size: 14px;
-//     font-style: normal;
-//     font-weight: 400;
-//     line-height: 18px;
-//     letter-spacing: -0.25px;
-// }
-
 .search {
-    position: relative; /* Allows you to position the icon inside the input */
+    position: relative; /* Allows positioning of icons inside the input */
+    display: flex;
+    width: 400px;
+    max-width: 476px;
+    align-items: center;
   
     .search-input {
-      width: 100%; /* Ensure input takes full width of parent */
-      padding-left: 30px; /* Add padding to prevent text from overlapping with the search icon */
-      font-family: "Brown LL"; /* Apply the correct font */
+      color: black;
+      width: 100%; /* Ensure the input takes full width of parent */
+      padding-left: 30px; /* Padding to prevent text from overlapping with the search icon */
+      padding-right: 40px; /* Padding to prevent text from overlapping with the delete icon */
+  
+      font-family: "Brown LL";
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
       line-height: 18px;
       letter-spacing: -0.25px;
-      text-align: center; /* Center align the text */
-      color: var(--semantic-fg-tertiary, #D0D1D3);
   
+      border-radius: 20px;
+      background: var(--Semantic-Light-Background-bg-Alpha, rgba(0, 0, 0, 0.04)); /* Use gray background */
+      border: 1px solid #ccc; /* Set a border color that remains consistent */
+
+      caret-color: #2B9BF0;
+  
+      /* Remove default focus behavior */
+      &:focus {
+        outline: none; /* Remove the blue outline */
+        border: 1px solid #ccc; /* Keep the border consistent even when focused */
+      }
+      
       /* Placeholder styling */
       &::placeholder {
         color: var(--semantic-fg-tertiary, #D0D1D3);
-        text-align: center;
         font-family: "Brown LL"; /* Same font for placeholder */
         font-size: 14px;
         font-style: normal;
@@ -52,5 +49,19 @@
       transform: translateY(-50%); /* Vertically center the icon */
       width: 16px;
       height: 16px;
+    }
+  
+    .delete-icon {
+      position: absolute;
+      right: 8px; /* Position the delete icon on the right inside the input */
+      top: 50%;
+      transform: translateY(-50%); /* Vertically center the icon */
+      width: 16px;
+      height: 16px;
+      cursor: pointer; /* Make it look clickable */
+  
+      /* Remove the background and border-radius to match the input background */
+      background: none;
+      border-radius: 0;
     }
   }
