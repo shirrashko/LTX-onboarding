@@ -1,32 +1,30 @@
-import User from "../../types/User";
+import User from "../../types/user.ts";
 import "./CreatorCard.scss";
 
 interface CreatorCardProps {
   creatorData: User;
 }
 
-function CreatorCard(creatorCardProps: CreatorCardProps) {
+function CreatorCard({ creatorData }: CreatorCardProps) {
   return (
     <div className="creator-card">
-      <div className="posts-preview" />
+      <div className="creator-posts-container" />
       <img
-        className="creator-image"
-        src={creatorCardProps.creatorData.profilePicture}
+        className="creator-profile-image"
+        src={creatorData.profilePicture}
         alt="Creator"
       />
-      <span className="creator-name">
-        {creatorCardProps.creatorData.firstName}{" "}
-        {creatorCardProps.creatorData.lastName}
-      </span>
-      <span className="creator-secondary-details">
-        {creatorCardProps.creatorData.age} |{" "}
-        {creatorCardProps.creatorData.address.city}{" "}
-        {creatorCardProps.creatorData.address.state}
-      </span>
-      <span className="creator-email">
-        {creatorCardProps.creatorData.email}
-      </span>
-      <button className="creator-details">Details</button>
+      <div className="creator-details-container">
+        <span className="creator-full-name">
+          {creatorData.firstName} {creatorData.lastName}
+        </span>
+        <span className="creator-metadata">
+          {creatorData.age} | {creatorData.address.city}{" "}
+          {creatorData.address.state}
+        </span>
+        <span className="creator-contact-email">{creatorData.email}</span>
+        <button className="view-details-button">Details</button>
+      </div>
     </div>
   );
 }
