@@ -1,0 +1,26 @@
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    text-align: left;
+    border-bottom: 1px solid #e6e7e9;
+  }
+
+  td {
+    padding: 0;
+  }
+
+  th {
+    padding: 10px;
+    background-color: #f7f7f7; // Background for all th elements
+    font-weight: 600;
+    color: var(--semantic-fg-primary, var(--semantic-fg-primary, #161719));
+    font-family: "Brown LL";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+  }
+}

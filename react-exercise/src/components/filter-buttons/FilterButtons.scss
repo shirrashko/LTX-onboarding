@@ -1,0 +1,37 @@
+.results-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  /* Style for the filter container text */
+  span {
+    color: var(--semantic-fg-primary, #161719);
+    font-family: "Brown LL";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  /* General filter button styling */
+  .filter-button {
+    display: flex;
+    height: 32px;
+    padding: 8px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 999px;
+    border: 1px solid var(--semantic-bg-neutral-inverse, #E6E7E9);
+    cursor: pointer;
+    font-family: "Brown LL";
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--semantic-fg-primary, #161719);
+    background-color: var(--semantic-bg-white, #FFF);
+
+    &.active {
+      background-color: var(--semantic-bg-primary, #e0e0e0);
+    }
+  }
+}
