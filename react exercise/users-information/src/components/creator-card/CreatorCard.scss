@@ -1,0 +1,93 @@
+@import "./variables.scss";
+
+.creator-card {
+  display: flex;
+  width: $card-width;
+  height: $card-height;
+  min-width: $card-min-width;
+  padding-bottom: $padding-bottom;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $gap-between-elements;
+  position: relative;
+
+  border-radius: $border-radius-md;
+  background: $background-color;
+
+  box-shadow: 0px 4px 12px -2px $box-shadow-primary, 0px 0px 4px 0px $box-shadow-secondary;
+
+  /* Styling for posts-preview */
+  .posts-preview {
+    background-color: lightgray;
+    width: 100%;
+    height: $posts-preview-height;
+  }
+
+  /* Creator image */
+  .creator-image {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 131px;
+    bottom: 166px;
+    border-radius: 50%;
+  }
+
+  /* Creator name styling */
+  .creator-name {
+    color: $primary-text-color;
+    text-align: center;
+    font-family: $font-family-main;
+    font-size: $font-size-md;
+    font-weight: 700;
+    line-height: $line-height-md;
+    letter-spacing: $letter-spacing-md;
+  }
+
+  /* Creator secondary details */
+  .creator-secondary-details {
+    color: $primary-text-color;
+    text-align: center;
+    font-family: $font-family-main;
+    font-size: $font-size-sm;
+    font-weight: 400;
+    line-height: $line-height-sm;
+    letter-spacing: $letter-spacing-sm;
+  }
+
+  /* Creator email styling */
+  .creator-email {
+    overflow: hidden;
+    color: $secondary-text-color;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-family: $font-family-main;
+    font-size: $font-size-lg;
+    font-weight: 400;
+    line-height: $line-height-lg;
+    letter-spacing: $letter-spacing-md;
+  }
+
+  /* Creator details button */
+  .creator-details {
+    display: flex;
+    height: 40px;
+    max-width: 272px;
+    padding: 8px 20px;
+    gap: 6px;
+    width: 100%;
+    border-radius: 999px;
+    background: $button-bg-color;
+    color: $neutral-text-color;
+    font-family: $font-family-main;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: $letter-spacing-md;
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  }
+}

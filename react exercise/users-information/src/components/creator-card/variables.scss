@@ -1,0 +1,28 @@
+/* Colors */
+$primary-text-color: var(--semantic-fg-primary, #161719);
+$secondary-text-color: var(--semantic-fg-secondary, #7A7C81);
+$neutral-text-color: var(--semantic-fg-neutral, #2C2D30);
+$background-color: var(--semantic-bg-secondary, #FFF);
+$box-shadow-primary: rgba(24, 39, 75, 0.08);
+$box-shadow-secondary: rgba(24, 39, 75, 0.02);
+$button-bg-color: var(--semantic-bg-neutral-secondary, rgba(44, 45, 48, 0.08));
+
+/* Sizes */
+$card-width: 342px;
+$card-min-width: 296px;
+$card-height: 416px;
+$padding-bottom: 32px;
+$gap-between-elements: 12px;
+$border-radius-md: var(--radius-md, 16px);
+$posts-preview-height: 200px;
+
+/* Font settings */
+$font-family-main: "Brown LL";
+$font-size-md: 18px;
+$font-size-sm: 12px;
+$font-size-lg: 16px;
+$line-height-md: 24px;
+$line-height-sm: 16px;
+$line-height-lg: 20px;
+$letter-spacing-md: -0.5px;
+$letter-spacing-sm: -0.25px;
