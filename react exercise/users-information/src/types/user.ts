@@ -11,7 +11,7 @@ interface User {
       state: string;
       country: string;
     };
-    profilePicture: string;
+    profilePicture: string 
 }
 
   export default User;
