@@ -1,4 +1,4 @@
-import Toggle from "../../components/Toggle/Toggle";
+import Toggle from "../../components/toggle/Toggle.tsx";
 import Search from "../../components/search/Search";
 import Topper from "../../components/Topper/Topper.tsx";
 import "./UserDetails.scss";

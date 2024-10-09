@@ -1,0 +1,28 @@
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e6e7e9;
+  }
+  
+  th {
+    background-color: #f7f7f7;
+    font-weight: 600;
+
+    color: var(--semantic-fg-primary, var(--semantic-fg-primary, #161719));
+    font-family: "Brown LL";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  UserRow {
+    margin: 0;
+  }
+
+}

@@ -1,8 +1,9 @@
 import "./App.css";
 // import UserList from "./pages/UserList/UserList";
 // import UserDetails from "./pages/userDetails/UserDetails.tsx";
-import UserRow from "./components/row/UserRow";
+// import UserRow from "./components/row/UserRow";
 import defaultProfilePicture from "./assets/default-profile-picture.svg";
+import UserTable from "./components/user-table/UserTable";
 
 const defaultCreator = {
   id: 1,
@@ -24,7 +25,7 @@ function App() {
     <>
       {/* <UserDetails /> */}
       {/* <UserList /> */}
-      <UserRow user={defaultCreator} />
+      <UserTable users={[defaultCreator, defaultCreator, defaultCreator]} />
     </>
   );
 }
