@@ -1,8 +1,7 @@
 import "./App.css";
-import UserList from "./pages/UserList/UserList";
-import Toggle from "./components/Toggle/Toggle.tsx";
-import Search from "./components/search/Search.tsx";
-import CreatorCard from "./components/creator-card/CreatorCard.tsx";
+// import UserList from "./pages/UserList/UserList";
+// import UserDetails from "./pages/userDetails/UserDetails.tsx";
+import UserRow from "./components/row/UserRow";
 import defaultProfilePicture from "./assets/default-profile-picture.svg";
 
 const defaultCreator = {
@@ -23,10 +22,9 @@ const defaultCreator = {
 function App() {
   return (
     <>
-      <CreatorCard creatorData={defaultCreator} />
-      <Toggle />
-      <Search />
-      <UserList />
+      {/* <UserDetails /> */}
+      {/* <UserList /> */}
+      <UserRow user={defaultCreator} />
     </>
   );
 }
