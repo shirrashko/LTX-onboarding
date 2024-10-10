@@ -14,9 +14,9 @@ function Row({ user }: RowProps): JSX.Element {
         </div>
       </div>
       <div className="user-info">
-        <div className="user-info-table">{user.email}</div>
-        <div className="user-info-table">{user.age}</div>
-        <div className="user-info-table">
+        <div className="user-info-data">{user.email}</div>
+        <div className="user-info-data">{user.age}</div>
+        <div className="user-info-data">
           {user.address.city}, {user.address.state}
         </div>
       </div>

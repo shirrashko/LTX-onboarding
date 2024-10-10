@@ -12,10 +12,18 @@ function UserTable({ users }: UserTableProps): JSX.Element {
     <table className="user-table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Age</th>
-          <th>Location</th>
+          <th className="identifier-header" id="header-name">
+            Name
+          </th>
+          <th className="info-header" id="header-email">
+            Email
+          </th>
+          <th className="info-header" id="header-age">
+            Age
+          </th>
+          <th className="info-header" id="header-location">
+            Location
+          </th>
         </tr>
       </thead>
       <tbody>
