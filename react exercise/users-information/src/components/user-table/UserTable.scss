@@ -3,9 +3,16 @@
     border-collapse: collapse;
   
   th, td {
-    padding: 10px;
     text-align: left;
     border-bottom: 1px solid #e6e7e9;
+  }
+
+  td {
+    padding: 0px;
+  }
+
+  th {
+    padding: 10px;
   }
   
   th {
@@ -21,8 +28,5 @@
     letter-spacing: -0.5px;
   }
 
-  UserRow {
-    margin: 0;
-  }
 
 }
