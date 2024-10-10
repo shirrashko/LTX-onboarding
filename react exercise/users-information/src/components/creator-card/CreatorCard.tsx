@@ -1,12 +1,11 @@
-import User from "../../types/user.ts";
+import { User } from "../../types/user.ts"; // Import defaultUser
 import "./CreatorCard.scss";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
 
 interface CreatorCardProps {
   creatorData: User;
 }
-
-function CreatorCard({ creatorData }: CreatorCardProps) {
+function CreatorCard({ creatorData }: CreatorCardProps): JSX.Element {
   return (
     <div className="creator-card">
       <div className="creator-posts-container">
@@ -16,7 +15,7 @@ function CreatorCard({ creatorData }: CreatorCardProps) {
       </div>
       <img
         className="creator-profile-image"
-        src={creatorData.profilePicture || defaultProfilePicture}
+        src={creatorData.image || defaultProfilePicture}
         alt={`${creatorData.firstName} ${creatorData.lastName}'s profile picture`}
       />
       <div className="creator-details-container">

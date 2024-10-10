@@ -83,13 +83,17 @@
         }
 
         .users-data {
-            display: flex;
-            padding-bottom: 40px;
-            align-items: flex-start;
-            align-content: flex-start;
-            gap: 24px;
-            align-self: stretch;
-            flex-wrap: wrap;
+
+            .card-mode {
+                display: flex;
+                padding-bottom: 40px;
+                align-items: flex-start;
+                align-content: flex-start;
+                gap: 24px;
+                align-self: stretch;
+                flex-wrap: wrap;
+
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 import "./Topper.scss";
 import LightricksLogo from "../../assets/lightricks-logo.svg";
 
-function Topper() {
+function Topper(): JSX.Element {
   return (
     <>
       <div className="top-navigation">

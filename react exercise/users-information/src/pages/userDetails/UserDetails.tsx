@@ -1,26 +1,23 @@
+import { useState } from "react";
 import Toggle from "../../components/toggle/Toggle.tsx";
 import Search from "../../components/search/Search";
 import Topper from "../../components/Topper/Topper.tsx";
 import "./UserDetails.scss";
 import CreatorCard from "../../components/creator-card/CreatorCard.tsx";
-import defaultProfilePicture from "../../assets/default-profile-picture.svg";
+import UserTable from "../../components/user-table/UserTable.tsx";
+import { User } from "../../types/user.ts";
 
-const defaultCreator = {
-  id: 1,
-  firstName: "Emily",
-  lastName: " Johnson",
-  age: 34,
-  email: "email@x.dummyjson.com",
-  phone: "123-456-789",
-  address: {
-    city: "Chicago",
-    state: "IL",
-    country: "IL",
-  },
-  profilePicture: defaultProfilePicture,
-};
+interface UserDetailsProps {
+  users: User[];
+}
 
-function UserDetails() {
+function UserDetails({ users }: UserDetailsProps) {
+  const [isGridView, setIsGridView] = useState(true);
+
+  const handleToggle = (view: boolean) => {
+    setIsGridView(view); // Update the view based on toggle
+  };
+
   return (
     <div className="user-details-page">
       <Topper />
@@ -37,24 +34,25 @@ function UserDetails() {
           </div>
           <div className="results-display">
             <span>22,919 results</span>
-            <Toggle />
+            <Toggle isGridView={isGridView} onToggle={handleToggle} />
           </div>
         </div>
         <div className="users-data">
-          <CreatorCard creatorData={defaultCreator} />
-          <CreatorCard creatorData={defaultCreator} />
-          <CreatorCard creatorData={defaultCreator} />
-
-          <CreatorCard creatorData={defaultCreator} />
-          <CreatorCard creatorData={defaultCreator} />
-          <CreatorCard creatorData={defaultCreator} />
-
-          <CreatorCard creatorData={defaultCreator} />
-          <CreatorCard creatorData={defaultCreator} />
-          <CreatorCard creatorData={defaultCreator} />
+          {isGridView ? ( // Conditional rendering based on isGridView state
+            <div className="card-mode">
+              {users.map((user) => (
+                <CreatorCard key={user.id} creatorData={user} />
+              ))}
+            </div>
+          ) : (
+            <div className="list-mode">
+              <UserTable users={users} />
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 }
+
 export default UserDetails;

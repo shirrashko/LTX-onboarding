@@ -1,13 +1,15 @@
-import React, { useState } from "react";
 import listIcon from "../../assets/list-icon.svg";
 import gridIcon from "../../assets/grid-icon.svg";
 import "./Toggle.scss";
 
-const Toggle = () => {
-  const [isGridView, setIsGridView] = useState(true);
+interface ToggleProps {
+  isGridView: boolean;
+  onToggle: (view: boolean) => void;
+}
 
+function Toggle({ isGridView, onToggle }: ToggleProps): JSX.Element {
   const handleToggle = () => {
-    setIsGridView(!isGridView);
+    onToggle(!isGridView);
   };
 
   return (
@@ -20,6 +22,6 @@ const Toggle = () => {
       <img src={listIcon} alt="List Icon" className="list-icon" />
     </div>
   );
-};
+}
 
 export default Toggle;

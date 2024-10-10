@@ -3,7 +3,7 @@ import searchIcon from "../../assets/search-icon.svg";
 import deleteIcon from "../../assets/delete-icon.svg";
 import "./Search.scss";
 
-function Search() {
+function Search(): JSX.Element {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
