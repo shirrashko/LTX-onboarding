@@ -7,6 +7,11 @@ import CreatorCard from "../../components/creator-card/CreatorCard.tsx";
 import UserTable from "../../components/user-table/UserTable.tsx";
 import { User } from "../../types/user.ts";
 
+export enum FilterType {
+  Cities = "cities",
+  Age = "age",
+}
+
 interface UserDetailsProps {
   users: User[];
 }
@@ -15,9 +20,7 @@ function UserDetails({ users }: UserDetailsProps) {
   const [isGridView, setIsGridView] = useState(true);
 
   // Object to track which filters are active (only one filter at a time)
-  const [activeFilter, setActiveFilter] = useState<"cities" | "age" | null>(
-    null
-  );
+  const [activeFilter, setActiveFilter] = useState<FilterType | null>(null);
 
   // State to track search query
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,7 +31,7 @@ function UserDetails({ users }: UserDetailsProps) {
   };
 
   // Handle filter click (reset searchQuery when changing filters)
-  const handleFilterClick = (filter: "cities" | "age") => {
+  const handleFilterClick = (filter: FilterType) => {
     setActiveFilter(filter);
     setSearchQuery(""); // Reset search input when filter is switched
   };
@@ -45,13 +48,13 @@ function UserDetails({ users }: UserDetailsProps) {
 
   // Filter users based on the active filter and search query
   const filteredUsers = users.filter((user) => {
-    if (activeFilter === "cities" && searchQuery) {
+    if (activeFilter === FilterType.Cities && searchQuery) {
       return user.address.city
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
     }
 
-    if (activeFilter === "age" && searchQuery) {
+    if (activeFilter === FilterType.Age && searchQuery) {
       return user.age.toString().startsWith(searchQuery);
     }
 
@@ -77,7 +80,7 @@ function UserDetails({ users }: UserDetailsProps) {
               className={`cities-filter-button ${
                 activeFilter === "cities" ? "active" : ""
               }`}
-              onClick={() => handleFilterClick("cities")}
+              onClick={() => handleFilterClick(FilterType.Cities)}
             >
               Cities
             </button>
@@ -85,7 +88,7 @@ function UserDetails({ users }: UserDetailsProps) {
               className={`age-filter-button ${
                 activeFilter === "age" ? "active" : ""
               }`}
-              onClick={() => handleFilterClick("age")}
+              onClick={() => handleFilterClick(FilterType.Age)}
             >
               Age
             </button>
