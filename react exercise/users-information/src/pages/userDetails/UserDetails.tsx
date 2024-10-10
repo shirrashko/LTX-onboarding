@@ -2,10 +2,11 @@ import { useState } from "react";
 import Toggle from "../../components/toggle/Toggle.tsx";
 import Search from "../../components/search/Search";
 import Topper from "../../components/topper/Topper.tsx";
-import "./UserDetails.scss";
 import CreatorCard from "../../components/creator-card/CreatorCard.tsx";
 import UserTable from "../../components/user-table/UserTable.tsx";
 import { User } from "../../types/user.ts";
+import { FilterButtons } from "../../components/filter-buttons/FilterButtons.tsx";
+import "./UserDetails.scss";
 
 export enum FilterType {
   Cities = "cities",
@@ -16,13 +17,27 @@ interface UserDetailsProps {
   users: User[];
 }
 
+const filterUsers = (
+  users: User[],
+  activeFilter: FilterType | null,
+  searchQuery: string
+): User[] => {
+  return users.filter((user) => {
+    if (activeFilter === FilterType.Cities && searchQuery) {
+      return user.address.city
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+    }
+    if (activeFilter === FilterType.Age && searchQuery) {
+      return user.age.toString().startsWith(searchQuery);
+    }
+    return true; // If no filters are active, return all users
+  });
+};
+
 function UserDetails({ users }: UserDetailsProps) {
   const [isGridView, setIsGridView] = useState(true);
-
-  // Object to track which filters are active (only one filter at a time)
   const [activeFilter, setActiveFilter] = useState<FilterType | null>(null);
-
-  // State to track search query
   const [searchQuery, setSearchQuery] = useState("");
 
   // Handle grid toggle
@@ -46,20 +61,8 @@ function UserDetails({ users }: UserDetailsProps) {
     setSearchQuery("");
   };
 
-  // Filter users based on the active filter and search query
-  const filteredUsers = users.filter((user) => {
-    if (activeFilter === FilterType.Cities && searchQuery) {
-      return user.address.city
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-    }
-
-    if (activeFilter === FilterType.Age && searchQuery) {
-      return user.age.toString().startsWith(searchQuery);
-    }
-
-    return true; // If no filters are active, return all users
-  });
+  // Filter users using the helper function
+  const filteredUsers = filterUsers(users, activeFilter, searchQuery);
 
   return (
     <div className="user-details-page">
@@ -74,25 +77,10 @@ function UserDetails({ users }: UserDetailsProps) {
           />
         </div>
         <div className="results-options">
-          <div className="results-filters">
-            <span>Filter by:</span>
-            <button
-              className={`cities-filter-button ${
-                activeFilter === "cities" ? "active" : ""
-              }`}
-              onClick={() => handleFilterClick(FilterType.Cities)}
-            >
-              Cities
-            </button>
-            <button
-              className={`age-filter-button ${
-                activeFilter === "age" ? "active" : ""
-              }`}
-              onClick={() => handleFilterClick(FilterType.Age)}
-            >
-              Age
-            </button>
-          </div>
+          <FilterButtons
+            activeFilter={activeFilter}
+            onFilterClick={handleFilterClick}
+          />
           <div className="results-display">
             <span>{filteredUsers.length} results</span>
             <Toggle isGridView={isGridView} onToggle={handleToggle} />
