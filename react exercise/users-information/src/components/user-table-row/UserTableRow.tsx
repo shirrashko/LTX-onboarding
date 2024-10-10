@@ -1,4 +1,3 @@
-import "/.UserTableRow.scss";
 import { User } from "../../types/user";
 
 type RowProps = {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Toggle from "../../components/toggle/Toggle.tsx";
 import Search from "../../components/search/Search";
-import Topper from "../../components/Topper/Topper.tsx";
+import Topper from "../../components/topper/Topper.tsx";
 import "./UserDetails.scss";
 import CreatorCard from "../../components/creator-card/CreatorCard.tsx";
 import UserTable from "../../components/user-table/UserTable.tsx";
