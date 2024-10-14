@@ -1,1 +1,4 @@
 /typescript project
+
+# Ignore all node_modules folders in subdirectories
+node_modules/
