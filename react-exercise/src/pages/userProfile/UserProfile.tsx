@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Topper from "../../components/topper/Topper";
 import { User } from "../../types/user.ts";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
@@ -7,10 +7,17 @@ import backArrowIcon from "../../assets/back-arrow-icon.svg";
 import "./UserProfile.scss";
 
 interface UserProfileProps {
-  user: User;
+  users: User[];
 }
 
-function UserProfile({ user }: UserProfileProps) {
+function UserProfile({ users }: UserProfileProps) {
+  const { id } = useParams();
+  const user = users.find((user) => user.id.toString() === id); // Find the user by ID
+
+  if (!user) {
+    return <p>User not found</p>;
+  }
+
   return (
     <div className="user-profile">
       <Topper />
