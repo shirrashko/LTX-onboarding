@@ -1,0 +1,30 @@
+
+
+.overview {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 724px;
+    padding-right: 56px;
+    align-self: stretch;
+
+    .title {
+        color: var(--semantic-fg-primary, #161719);
+        font-family: "Brown LL";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: -0.5px;
+    }
+
+    .content {
+        color: var(--semantic-fg-primary, #161719);
+        font-family: "Brown LL";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.5px;
+    }
+}

@@ -1,4 +1,5 @@
 import { User } from "../../types/user.ts";
+import "./Overview.scss";
 
 interface OverviewProps {
   user: User;
@@ -6,9 +7,9 @@ interface OverviewProps {
 
 function Overview({ user }: OverviewProps) {
   return (
-    <div className="about-me">
-      <h3>About me</h3>
-      <span>
+    <div className="overview">
+      <h3 className="title">About me</h3>
+      <span className="content">
         Hi, I’m {user.firstName} {user.lastName}. I’m {user.age} years old and
         currently work as a {user.company?.title} in the{" "}
         {user.company?.department} department at {user.company?.name}. I

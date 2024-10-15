@@ -12,7 +12,7 @@ interface UserProfileProps {
 
 function UserProfile({ users }: UserProfileProps) {
   const { id } = useParams();
-  const user = users.find((user) => user.id.toString() === id); // Find the user by ID
+  const user = users.find((user) => user.id.toString() === id);
 
   if (!user) {
     return <p>User not found</p>;
