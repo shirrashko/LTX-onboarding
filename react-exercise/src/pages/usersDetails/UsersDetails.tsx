@@ -2,7 +2,7 @@ import { useState } from "react";
 import Toggle from "../../components/toggle/Toggle.tsx";
 import Search from "../../components/search/Search.tsx";
 import Topper from "../../components/topper/Topper.tsx";
-import CreatorCard from "../../components/creator-card/CreatorCard";
+import CreatorCard from "../../components/creator-card/CreatorCard.tsx";
 import UserTable from "../../components/user-table/UserTable.tsx";
 import { User } from "../../types/user.ts";
 import { FilterButtons } from "../../components/filter-buttons/FilterButtons.tsx";

@@ -15,7 +15,7 @@ function UserProfile({ users }: UserProfileProps) {
   const user = users.find((user) => user.id.toString() === id);
 
   if (!user) {
-    return <p>User not found</p>;
+    return <p>User not found yet...</p>;
   }
 
   return (
