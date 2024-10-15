@@ -1,7 +1,8 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import UsersDetails from "./pages/usersDetails/UsersDetails.tsx";
+import UserProfile from "./pages/userProfile/UserProfile.tsx";
 import { User } from "./types/user.ts";
+
 function App() {
   const [users, setUsers] = useState<User[]>([]);
   useEffect(() => {
@@ -11,7 +12,7 @@ function App() {
   }, []);
   return (
     <>
-      <UsersDetails users={users} />
+      {users.length > 0 ? <UserProfile user={users[0]} /> : <p>Loading...</p>}
     </>
   );
 }
