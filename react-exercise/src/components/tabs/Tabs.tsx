@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Overview from "../../components/user-profile-overview/Overview.tsx";
 import Posts from "../../components/user-profile-posts/Posts.tsx";
 import { User } from "../../types/user.ts";
