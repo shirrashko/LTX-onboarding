@@ -18,31 +18,24 @@ function Tabs({ user }: TabsProps) {
     <div className="tabs">
       <div className="tab-buttons">
         <button
-          className={clsx("tab-button", { active: activeTab === "overview" })}
+          className={clsx("tab-button", activeTab === "overview" && "active")}
           onClick={() => setActiveTab("overview")}
         >
           Overview
         </button>
         <button
-          className={`tab-button ${activeTab === "posts" ? "active" : ""}`}
+          className={clsx("tab-button", activeTab === "posts" && "active")}
           onClick={() => setActiveTab("posts")}
         >
           Posts
         </button>
       </div>
 
-      <div className="tab-content">
-        {activeTab === "overview" && (
-          <div className="overview-content">
-            <Overview user={user} />
-          </div>
-        )}
-
-        {activeTab === "posts" && (
-          <div className="posts-content">
-            <Posts />
-          </div>
-        )}
+      <div className="tab-content-container">
+        <div className="tab-content">
+          {activeTab === "overview" && <Overview user={user} />}
+          {activeTab === "posts" && <Posts />}
+        </div>
       </div>
     </div>
   );
