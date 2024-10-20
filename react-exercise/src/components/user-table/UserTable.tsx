@@ -9,33 +9,31 @@ type UserTableProps = {
 
 function UserTable({ users }: UserTableProps) {
   return (
-    <table className="user-table">
-      <thead>
-        <tr>
-          <th className="identifier-header" id="header-name">
-            Name
-          </th>
-          <th className="info-header" id="header-email">
-            Email
-          </th>
-          <th className="info-header" id="header-age">
-            Age
-          </th>
-          <th className="info-header" id="header-location">
-            Location
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {users.map((user) => (
-          <tr key={user.id}>
-            <td colSpan={4}>
-              <UserTableRow user={user} />
-            </td>
+    <div className="user-table-container">
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th className="identifier-header" id="header-name">
+              Name
+            </th>
+            <th className="info-header" id="header-email">
+              Email
+            </th>
+            <th className="info-header" id="header-age">
+              Age
+            </th>
+            <th className="info-header" id="header-location">
+              Location
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <UserTableRow key={user.id} user={user} />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

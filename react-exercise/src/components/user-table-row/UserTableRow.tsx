@@ -4,24 +4,22 @@ type RowProps = {
   user: User;
 };
 
-function Row({ user }: RowProps) {
+function UserTableRow({ user }: RowProps) {
   return (
-    <div className="user-row">
-      <div className="user-identifier">
+    <tr className="user-row">
+      <td className="user-identifier">
         <img className="user-profile-picture" src={user.image} alt="Profile" />
-        <div className="user-name">
+        <span className="user-name">
           {user.firstName} {user.lastName}
-        </div>
-      </div>
-      <div className="user-info">
-        <div className="user-info-data">{user.email}</div>
-        <div className="user-info-data">{user.age}</div>
-        <div className="user-info-data">
-          {user.address.city}, {user.address.state}
-        </div>
-      </div>
-    </div>
+        </span>
+      </td>
+      <td className="user-info">{user.email}</td>
+      <td className="user-info">{user.age}</td>
+      <td className="user-info">
+        {user.address.city}, {user.address.state}
+      </td>
+    </tr>
   );
 }
 
-export default Row;
+export default UserTableRow;
