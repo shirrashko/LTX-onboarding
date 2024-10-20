@@ -1,3 +1,26 @@
+.user-table-container {
+  overflow-y: auto;
+  max-height: 680px;
+
+  /* Custom Scrollbar */
+  &::-webkit-scrollbar {
+    width: 6px; // Scrollbar width
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #F3F4F6; // Scrollbar track color
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #D0D1D3; // Scrollbar handle color
+    border-radius: 50px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #B0B1B3; // Darker scrollbar handle color on hover
+  }
+}
+
 .user-table {
   width: 100%;
   border-collapse: collapse;
@@ -8,19 +31,45 @@
   }
 
   td {
-    padding: 0;
+    padding: 12px;
+    font-family: "Brown LL", sans-serif;
+    font-size: 14px;
+    color: var(--semantic-fg-neutral, #161719); 
+    line-height: 1.5;
+    vertical-align: middle;
   }
 
   th {
     padding: 10px;
-    background-color: #f7f7f7; // Background for all th elements
     font-weight: 600;
     color: var(--semantic-fg-primary, var(--semantic-fg-primary, #161719));
-    font-family: "Brown LL";
+    font-family: "Brown LL", sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 18px;
     letter-spacing: -0.5px;
+
+    /* Sticky header */
+    position: sticky;
+    top: 0;
+    background-color: #f7f7f7; // Explicitly define a background color so when it scrolls it doesn't disappear
+    z-index: 1; // Ensure the header is on top of table rows while scrolling
+  }
+
+  .user-row {
+    background-color: #fff;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+
+  .identifier-header {
+    width: 25%;
+  }
+
+  .info-header {
+    width: auto;
+    padding-left: 16px;
   }
 }
