@@ -8,18 +8,17 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/users")
+    fetch("http://localhost:4000/users")
       .then((res) => res.json())
-      .then((data) => setUsers(data.users));
+      .then((data) => setUsers(data))
+      .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
   return (
     <Router>
       <Routes>
-        {/* Main page that shows the list of users */}
         <Route path="/" element={<UsersDetails users={users} />} />
 
-        {/* User profile route using the user id */}
         <Route
           path="/user-profile/:id"
           element={<UserProfile users={users} />}
