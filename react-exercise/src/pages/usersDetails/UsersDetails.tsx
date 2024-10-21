@@ -10,25 +10,30 @@ import { FilterType } from "../../types/filter.ts";
 import "./UsersDetails.scss";
 
 interface UsersDetailsProps {
-  users: User[];
+  users: Map<string, User>;
 }
 
+// Helper function to filter users based on search query and filter type
 const filterUsers = (
-  users: User[],
+  users: Map<string, User>,
   searchQuery: string,
   activeFilter?: FilterType
 ): User[] => {
-  return users.filter((user) => {
+  const filteredUsers: User[] = [];
+  users.forEach((user) => {
     if (activeFilter === "Cities" && searchQuery) {
-      return user.address.city
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
+      if (user.address.city.toLowerCase().includes(searchQuery.toLowerCase())) {
+        filteredUsers.push(user);
+      }
+    } else if (activeFilter === "Age" && searchQuery) {
+      if (user.age.toString().startsWith(searchQuery)) {
+        filteredUsers.push(user);
+      }
+    } else if (!activeFilter || searchQuery === "") {
+      filteredUsers.push(user); // Add all users if no filter is active or no search query
     }
-    if (activeFilter === "Age" && searchQuery) {
-      return user.age.toString().startsWith(searchQuery);
-    }
-    return true; // If no filters are active, return all users
   });
+  return filteredUsers;
 };
 
 function UsersDetails({ users }: UsersDetailsProps) {

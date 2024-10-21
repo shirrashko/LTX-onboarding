@@ -3,6 +3,7 @@ import { User } from "../../types/user.ts";
 import "./ProfileDetails.scss";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
 import EditProfileForm from "../edit-profile-form/EditProfileForm.tsx";
+import { useUsersStore } from "../../stores/usersStore.ts";
 
 interface ProfileDetailsProps {
   user: User;
@@ -19,8 +20,16 @@ function ProfileDetails({ user }: ProfileDetailsProps) {
     setIsEditing(false);
   };
 
+  const updateUser = (updatedUser: User) => {
+    useUsersStore.setState((state) => ({
+      users: state.users.map((user) =>
+        user.id === updatedUser.id ? updatedUser : user
+      ),
+    }));
+  };
+
   const handleSaveClick = (updatedUser: User) => {
-    // Here you can update the user in the store or send it to the backend
+    updateUser(updatedUser);
     setIsEditing(false);
     console.log("Saved user:", updatedUser);
   };

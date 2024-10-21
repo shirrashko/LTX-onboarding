@@ -7,12 +7,12 @@ import backArrowIcon from "../../assets/back-arrow-icon.svg";
 import "./UserProfile.scss";
 
 interface UserProfileProps {
-  users: User[];
+  users: Map<string, User>;
 }
 
 function UserProfile({ users }: UserProfileProps) {
   const { id } = useParams();
-  const user = users.find((user) => user.id.toString() === id);
+  const user = id ? users.get(id) : undefined;
 
   if (!user) {
     return <p>User not found yet...</p>;
