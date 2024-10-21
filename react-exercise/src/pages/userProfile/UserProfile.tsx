@@ -1,27 +1,22 @@
 import { Link, useParams } from "react-router-dom";
 import Topper from "../../components/topper/Topper";
-import { User } from "../../types/user.ts";
 import ProfileDetails from "../../components/profile-details/ProfileDetails.tsx";
 import Tabs from "../../components/tabs/Tabs.tsx";
 import backArrowIcon from "../../assets/back-arrow-icon.svg";
 import "./UserProfile.scss";
+import { useUsersStore } from "../../stores/usersStore.ts";
 
-interface UserProfileProps {
-  users: User[];
-}
-
-function UserProfile({ users }: UserProfileProps) {
+function UserProfile() {
   const { id } = useParams();
-  const user = users.find((user) => user.id.toString() === id);
+  const users = useUsersStore((state) => state.users);
+  const user = id ? users.get(id) : undefined;
 
   if (!user) {
     return <p>User not found yet...</p>;
   }
-
   return (
     <div className="user-profile">
       <Topper />
-
       <div className="container">
         <Link to="/" className="back-to-search">
           <img
@@ -41,5 +36,4 @@ function UserProfile({ users }: UserProfileProps) {
     </div>
   );
 }
-
 export default UserProfile;
