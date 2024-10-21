@@ -1,17 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 import Topper from "../../components/topper/Topper";
-import { User } from "../../types/user.ts";
 import ProfileDetails from "../../components/profile-details/ProfileDetails.tsx";
 import Tabs from "../../components/tabs/Tabs.tsx";
 import backArrowIcon from "../../assets/back-arrow-icon.svg";
 import "./UserProfile.scss";
+import { useUsersStore } from "../../stores/usersStore.ts";
 
-interface UserProfileProps {
-  users: Map<string, User>;
-}
-
-function UserProfile({ users }: UserProfileProps) {
+function UserProfile() {
   const { id } = useParams();
+  const users = useUsersStore((state) => state.users);
   const user = id ? users.get(id) : undefined;
 
   if (!user) {

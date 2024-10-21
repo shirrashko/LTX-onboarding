@@ -1,27 +1,22 @@
-import UsersDetails from "./pages/usersDetails/UsersDetails.tsx";
-import { User } from "./types/user.ts";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useUsersStore } from "./stores/usersStore.ts";
-import UserProfile from "./pages/userProfile/UserProfile.tsx";
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { setUsers } from "./stores/usersStore.ts";
+import UsersDetails from "./pages/usersDetails/UsersDetails.tsx";
+import UserProfile from "./pages/userProfile/UserProfile.tsx";
+import { FetchState } from "./types/fetchUsersState";
 import "./App.css";
+import { enableMapSet } from "immer";
 
-// Define a type for fetch state
-type FetchState = "loading" | "success" | "error";
+// Enables the use of Map and Set in Immer
+enableMapSet();
 
 function App() {
-  const users = useUsersStore((state) => state.users);
-  const [fetchState, setFetchState] = useState<FetchState>("loading"); // Manage state with a single variable
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // For error messages
-
-  // Action to update the users state
-  const setUsers = (users: User[]) => {
-    const usersMap = new Map(users.map((user) => [user.id.toString(), user]));
-    useUsersStore.setState({ users: usersMap });
-  };
+  const [fetchState, setFetchState] = useState<FetchState>({
+    type: "progress",
+  });
 
   useEffect(() => {
-    setFetchState("loading"); // Set to loading when fetching starts
+    setFetchState({ type: "progress" });
     fetch("http://localhost:4000/users")
       .then((res) => {
         if (!res.ok) {
@@ -31,32 +26,28 @@ function App() {
       })
       .then((data) => {
         setUsers(data);
-        setFetchState("success"); // Set to success when data is loaded
+        setFetchState({ type: "success" });
       })
       .catch((error) => {
         console.error("Error fetching users:", error);
-        setFetchState("error");
-        setErrorMessage("Failed to fetch users. Please try again later.");
+        setFetchState({
+          type: "failure",
+          errorMessage: "Failed to fetch users. Please try again later.",
+        });
       });
   }, []);
 
-  // Conditional rendering based on fetchState
-  if (fetchState === "loading") {
+  if (fetchState.type === "progress") {
     return <p className="loading-message">Loading users...</p>;
-  }
-
-  if (fetchState === "error") {
-    return <p className="error-message">Error: {errorMessage}</p>;
+  } else if (fetchState.type === "failure") {
+    return <p className="error-message">Error: {fetchState.errorMessage}</p>;
   }
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<UsersDetails users={users} />} />
-        <Route
-          path="/user-profile/:id"
-          element={<UserProfile users={users} />}
-        />
+        <Route path="/" element={<UsersDetails />} />
+        <Route path="/user-profile/:id" element={<UserProfile />} />
       </Routes>
     </Router>
   );

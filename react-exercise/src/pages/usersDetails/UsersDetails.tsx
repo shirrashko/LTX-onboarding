@@ -8,35 +8,11 @@ import { User } from "../../types/user.ts";
 import { FilterButtons } from "../../components/filter-buttons/FilterButtons.tsx";
 import { FilterType } from "../../types/filter.ts";
 import "./UsersDetails.scss";
+import { useUsersStore } from "../../stores/usersStore.ts";
 
-interface UsersDetailsProps {
-  users: Map<string, User>;
-}
+function UsersDetails() {
+  const users = useUsersStore((state) => state.users);
 
-// Helper function to filter users based on search query and filter type
-const filterUsers = (
-  users: Map<string, User>,
-  searchQuery: string,
-  activeFilter?: FilterType
-): User[] => {
-  const filteredUsers: User[] = [];
-  users.forEach((user) => {
-    if (activeFilter === "Cities" && searchQuery) {
-      if (user.address.city.toLowerCase().includes(searchQuery.toLowerCase())) {
-        filteredUsers.push(user);
-      }
-    } else if (activeFilter === "Age" && searchQuery) {
-      if (user.age.toString().startsWith(searchQuery)) {
-        filteredUsers.push(user);
-      }
-    } else if (!activeFilter || searchQuery === "") {
-      filteredUsers.push(user); // Add all users if no filter is active or no search query
-    }
-  });
-  return filteredUsers;
-};
-
-function UsersDetails({ users }: UsersDetailsProps) {
   const [isGridView, setIsGridView] = useState(true);
   const [activeFilter, setActiveFilter] = useState<FilterType>("Cities");
   const [searchQuery, setSearchQuery] = useState("");
@@ -95,3 +71,26 @@ function UsersDetails({ users }: UsersDetailsProps) {
   );
 }
 export default UsersDetails;
+
+// Helper function to filter users based on search query and filter type
+const filterUsers = (
+  users: Map<string, User>,
+  searchQuery: string,
+  activeFilter?: FilterType
+): User[] => {
+  const filteredUsers: User[] = [];
+  users.forEach((user) => {
+    if (activeFilter === "Cities" && searchQuery) {
+      if (user.address.city.toLowerCase().includes(searchQuery.toLowerCase())) {
+        filteredUsers.push(user);
+      }
+    } else if (activeFilter === "Age" && searchQuery) {
+      if (user.age.toString().startsWith(searchQuery)) {
+        filteredUsers.push(user);
+      }
+    } else if (!activeFilter || searchQuery === "") {
+      filteredUsers.push(user); // Add all users if no filter is active or no search query
+    }
+  });
+  return filteredUsers;
+};

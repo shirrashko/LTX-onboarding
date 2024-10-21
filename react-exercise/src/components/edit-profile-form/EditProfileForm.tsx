@@ -40,7 +40,6 @@ const EditProfileForm = ({ user, onSave, onCancel }: EditProfileFormProps) => {
   };
 
   const handleSaveClick = () => {
-    // Basic validation example: check if email is a valid email and age is positive
     if (!/\S+@\S+\.\S+/.test(editData.email)) {
       alert("Please enter a valid email.");
       return;
@@ -85,4 +84,5 @@ const EditProfileForm = ({ user, onSave, onCancel }: EditProfileFormProps) => {
     </div>
   );
 };
+
 export default EditProfileForm;

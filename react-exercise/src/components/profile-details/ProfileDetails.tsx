@@ -1,7 +1,7 @@
 import "./ProfileDetails.scss";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
 import EditProfileForm from "../edit-profile-form/EditProfileForm.tsx";
-import { useUsersStore } from "../../stores/usersStore.ts";
+import { updateUser } from "../../stores/usersStore.ts";
 import { useState } from "react";
 import { User } from "../../types/user.ts";
 
@@ -17,19 +17,12 @@ function ProfileDetails({ user }: ProfileDetailsProps) {
     setIsEditing(false);
   };
 
-  const updateUser = (updatedUser: User) => {
-    useUsersStore.setState((state) => {
-      const updatedUsers = new Map(state.users); // Create a new Map from the current state
-      updatedUsers.set(updatedUser.id.toString(), updatedUser); // Update the specific user in the Map
-      return { users: updatedUsers };
-    });
-  };
-
   const handleSaveClick = (updatedUser: User) => {
     updateUser(updatedUser);
     setIsEditing(false);
     console.log("Saved user:", updatedUser);
   };
+
   if (isEditing) {
     return (
       <EditProfileForm
