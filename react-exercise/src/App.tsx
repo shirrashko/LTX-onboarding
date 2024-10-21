@@ -8,9 +8,10 @@ function App() {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/users")
+    fetch("http://localhost:4000/users")
       .then((res) => res.json())
-      .then((data) => setUsers(data.users));
+      .then((data) => setUsers(data))
+      .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
   return (
