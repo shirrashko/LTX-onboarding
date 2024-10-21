@@ -10,51 +10,51 @@ import { FilterType } from "../../types/filter.ts";
 import "./UsersDetails.scss";
 
 interface UsersDetailsProps {
-  users: User[];
+  users: Map<string, User>;
 }
 
+// Helper function to filter users based on search query and filter type
 const filterUsers = (
-  users: User[],
+  users: Map<string, User>,
   searchQuery: string,
   activeFilter?: FilterType
 ): User[] => {
-  return users.filter((user) => {
+  const filteredUsers: User[] = [];
+  users.forEach((user) => {
     if (activeFilter === "Cities" && searchQuery) {
-      return user.address.city
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
+      if (user.address.city.toLowerCase().includes(searchQuery.toLowerCase())) {
+        filteredUsers.push(user);
+      }
+    } else if (activeFilter === "Age" && searchQuery) {
+      if (user.age.toString().startsWith(searchQuery)) {
+        filteredUsers.push(user);
+      }
+    } else if (!activeFilter || searchQuery === "") {
+      filteredUsers.push(user); // Add all users if no filter is active or no search query
     }
-    if (activeFilter === "Age" && searchQuery) {
-      return user.age.toString().startsWith(searchQuery);
-    }
-    return true; // If no filters are active, return all users
   });
+  return filteredUsers;
 };
 
 function UsersDetails({ users }: UsersDetailsProps) {
   const [isGridView, setIsGridView] = useState(true);
   const [activeFilter, setActiveFilter] = useState<FilterType>("Cities");
   const [searchQuery, setSearchQuery] = useState("");
-
   // Handle grid toggle
   const handleToggle = (view: boolean) => {
     setIsGridView(view);
   };
-
   // Handle filter click (reset searchQuery when changing filters)
   const handleFilterClick = (filter: FilterType) => {
     setActiveFilter(filter);
     setSearchQuery(""); // Reset search input when filter is switched
   };
-
   // Clear search input
   const handleClearSearch = () => {
     setSearchQuery("");
   };
-
   // Filter users using the helper function
   const filteredUsers = filterUsers(users, searchQuery, activeFilter);
-
   return (
     <div className="user-details-page">
       <Topper />
@@ -94,5 +94,4 @@ function UsersDetails({ users }: UsersDetailsProps) {
     </div>
   );
 }
-
 export default UsersDetails;
