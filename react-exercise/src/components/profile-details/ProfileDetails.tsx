@@ -20,7 +20,7 @@ function ProfileDetails({ user }: ProfileDetailsProps) {
   };
 
   const handleSaveClick = (updatedUser: User) => {
-    // Here you can update the user in the store or send it to the backend todo
+    // Here you can update the user in the store or send it to the backend
     setIsEditing(false);
     console.log("Saved user:", updatedUser);
   };

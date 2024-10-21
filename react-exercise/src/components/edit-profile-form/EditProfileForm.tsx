@@ -8,8 +8,36 @@ interface EditProfileFormProps {
   onCancel: () => void;
 }
 
+const editableFields = [
+  { key: "firstName", label: "First Name", type: "text" },
+  { key: "lastName", label: "Last Name", type: "text" },
+  { key: "age", label: "Age", type: "number" },
+  { key: "email", label: "Email", type: "email" },
+  { key: "address.city", label: "City", type: "text" },
+  { key: "address.state", label: "State", type: "text" },
+  { key: "address.country", label: "Country", type: "text" },
+  { key: "phone", label: "Phone", type: "text" },
+  { key: "gender", label: "Gender", type: "text" },
+];
+
+const getNestedValue = (obj: any, path: string) =>
+  path.split(".").reduce((acc, part) => acc && acc[part], obj);
+
+const setNestedValue = (obj: any, path: string, value: any) => {
+  const parts = path.split(".");
+  const last = parts.pop();
+  const deep = parts.reduce((acc, part) => acc && acc[part], obj);
+  if (deep && last) deep[last] = value;
+};
+
 const EditProfileForm = ({ user, onSave, onCancel }: EditProfileFormProps) => {
   const [editData, setEditData] = useState(user);
+
+  const handleInputChange = (key: string, value: string | number) => {
+    const updatedData = { ...editData };
+    setNestedValue(updatedData, key, value);
+    setEditData(updatedData);
+  };
 
   const handleSaveClick = () => {
     onSave(editData); // Call the parent save function with the updated data
@@ -18,72 +46,22 @@ const EditProfileForm = ({ user, onSave, onCancel }: EditProfileFormProps) => {
   return (
     <div className="edit-profile-form">
       <form>
-        <label>
-          First Name:
-          <input
-            type="text"
-            value={editData.firstName}
-            onChange={(e) =>
-              setEditData({ ...editData, firstName: e.target.value })
-            }
-          />
-        </label>
-        <label>
-          Last Name:
-          <input
-            type="text"
-            value={editData.lastName}
-            onChange={(e) =>
-              setEditData({ ...editData, lastName: e.target.value })
-            }
-          />
-        </label>
-        <label>
-          Age:
-          <input
-            type="number"
-            value={editData.age}
-            onChange={(e) =>
-              setEditData({ ...editData, age: Number(e.target.value) })
-            }
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={editData.email}
-            onChange={(e) =>
-              setEditData({ ...editData, email: e.target.value })
-            }
-          />
-        </label>
-        <label>
-          City:
-          <input
-            type="text"
-            value={editData.address.city}
-            onChange={(e) =>
-              setEditData({
-                ...editData,
-                address: { ...editData.address, city: e.target.value },
-              })
-            }
-          />
-        </label>
-        <label>
-          State:
-          <input
-            type="text"
-            value={editData.address.state}
-            onChange={(e) =>
-              setEditData({
-                ...editData,
-                address: { ...editData.address, state: e.target.value },
-              })
-            }
-          />
-        </label>
+        {editableFields.map(({ key, label, type }) => (
+          <label key={key}>
+            {label}:
+            <input
+              type={type}
+              value={getNestedValue(editData, key)}
+              onChange={(e) =>
+                handleInputChange(
+                  key,
+                  type === "number" ? Number(e.target.value) : e.target.value
+                )
+              }
+            />
+          </label>
+        ))}
+
         <div className="form-buttons">
           <button type="button" onClick={handleSaveClick}>
             Save
