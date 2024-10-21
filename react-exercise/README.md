@@ -1,50 +1,79 @@
-# React + TypeScript + Vite
+Users Information website: React & Typescript Exercise:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LTX Onboarding is a web-based application built using React, TypeScript, and Zustand for state management. The project serves as an onboarding exercise, demonstrating essential web development concepts such as fetching data from APIs, handling routing, managing state with Zustand, and implementing user profile management features.
 
-Currently, two official plugins are available:
+Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    •	Features
+    •	Installation
+    •	Usagreact-exercise/src/components/edit-profile-form/EditPorfileForm.scsse
+    •	API Reference
+    •	Technologies
+    •	Contributing
+    •	License
 
-## Expanding the ESLint configuration
+Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+    •	Fetch and display user data from a local JSON server
+    •	User profile management (view, edit, and delete user details)
+    •	React Router for navigation between users lists and specific profile pages
+    •	Zustand for efficient state management
+    •	Responsive UI using SCSS
+    •	API integration with a local json-server to simulate backend services
 
-- Configure the top-level `parserOptions` property like this:
+Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+To get started with the project, follow these steps:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+    1.	Clone the repository:
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+git clone git@github.com:shirrashko/LTX-onboarding.git
+cd "react-exercise"
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
-```
+    2.	Install dependencies:
+
+Make sure you have Node.js installed. Then run:
+
+npm install
+
+    3.	Run the JSON server:
+
+Start the json-server for simulating a backend server to fetch users:
+
+json-server --watch db.json --port 4000
+
+    4.	Start the development server:
+
+Start the React application:
+
+npm run dev
+
+    5.	Visit the app:
+
+Open your browser and visit:
+
+http://localhost:3000
+
+Usage
+
+    1.	Home Page:
+
+Displays a list of users fetched from the JSON server. 2. User Profiles:
+Navigate to a user’s profile page by clicking on their name in the list. 3. Editing Profiles:
+From the user profile page, edit the user’s details, which are reflected in the application state. 4. Add / Delete Users: Add new users or delete existing ones using the corresponding form and buttons.
+
+API Reference
+
+The application uses a json-server to simulate a backend API. The following endpoints are available:
+
+    •	GET /users: Fetch all users.
+    •	GET /users/:id: Fetch a single user by ID.
+
+Technologies
+
+    •	React: A JavaScript library for building user interfaces.
+    •	TypeScript: Superset of JavaScript that adds static typing.
+    •	Zustand: State management library for React.
+    •	React Router: For routing and navigation between pages.
+    •	SCSS: CSS preprocessor for modular and scalable styles.
+    •	json-server: A fake REST API to simulate data fetching and mutation.
