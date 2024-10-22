@@ -1,5 +1,5 @@
 import { fetchUsers as fetchUsersOnServer, createUser, updateUser as updateUserOnServer, deleteUser } from './usersDBClient';
-import { addUser as addUserOnStore, setUsers as setUsersOnStore, updateUser as updateUserOnStore, removeUser } from './stores/usersStore';
+import { addUser as addUserOnStore, setUsers as setUsersOnStore, updateUser as updateUserOnStore, removeUser as removeUserOnStore} from './stores/usersStore';
 import { User } from './types/user';
 
 interface FetchUsersStateCallbacks {
@@ -20,7 +20,7 @@ export const fetchUsers = async ({ onProgress, onSuccess, onFailure }: FetchUser
   }
 };
 
-export const addUserSync = async (newUser: User) => {
+export const addUser = async (newUser: User) => {
   try {
     const createdUser = await createUser(newUser); // Add user on the server
     addUserOnStore(createdUser); // Update Zustand store
@@ -29,7 +29,7 @@ export const addUserSync = async (newUser: User) => {
   }
 };
 
-export const updateUserSync = async (updatedUser: User) => {
+export const updateUser = async (updatedUser: User) => {
   try {
     const user = await updateUserOnServer(updatedUser); // Update user on the server
     updateUserOnStore(user); // Update Zustand store
@@ -38,10 +38,10 @@ export const updateUserSync = async (updatedUser: User) => {
   }
 };
 
-export const removeUserSync = async (userId: string) => {
+export const removeUser = async (userId: string) => {
   try {
     await deleteUser(userId); // Delete user on the server
-    removeUser(userId); // Update Zustand store
+    removeUserOnStore(userId); // Update Zustand store
   } catch (error) {
     console.error('Failed to remove user:', error);
   }
