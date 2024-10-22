@@ -29,7 +29,6 @@ function ProfileDetails({ user }: ProfileDetailsProps) {
         user={user}
         onSave={handleSaveClick}
         onCancel={handleCancelClick}
-        formTitle="Edit Profile"
       />
     );
   }
