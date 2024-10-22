@@ -15,7 +15,7 @@ export const fetchUsers = async ({ onProgress, onSuccess, onFailure }: FetchUser
     setUsersOnStore(users); // Set users in Zustand store
     onSuccess();
   } catch (error) {
-    console.error('Failed to sync users:', error);
+    console.error('Failed to fetch and sync users:', error);
     onFailure('Failed to fetch users. Please try again later.');
   }
 };
