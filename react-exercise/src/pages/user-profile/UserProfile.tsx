@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import Topper from "../../components/topper/Topper";
+import Topper from "../../components/topper/Topper.tsx";
 import ProfileDetails from "../../components/profile-details/ProfileDetails.tsx";
 import Tabs from "../../components/tabs/Tabs.tsx";
 import backArrowIcon from "../../assets/back-arrow-icon.svg";

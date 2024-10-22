@@ -7,13 +7,13 @@ import UserTable from "../../components/user-table/UserTable.tsx";
 import { User } from "../../types/user.ts";
 import { FilterButtons } from "../../components/filter-buttons/FilterButtons.tsx";
 import { FilterType } from "../../types/filter.ts";
-import "./UsersDetails.scss";
+import "./UsersDashboard.scss";
 import { useUsersStore } from "../../stores/usersStore.ts";
 import UserForm from "../../components/user-form/UserForm.tsx";
 import { addUserSync } from "../../usersClientService.ts";
 import { v4 as uuidv4 } from "uuid";
 
-function UsersDetails() {
+function UsersDashboard() {
   const users = useUsersStore((state) => state.users);
 
   const [isGridView, setIsGridView] = useState(true);
@@ -55,9 +55,9 @@ function UsersDetails() {
   const filteredUsers = filterUsers(users, searchQuery, activeFilter);
 
   return (
-    <div className="user-details-page">
+    <div className="user-dashbord-page">
       <Topper />
-      <div className="user-details">
+      <div className="user-dashbord">
         <div className="search-users">
           Search users
           <Search
@@ -121,7 +121,7 @@ function UsersDetails() {
     </div>
   );
 }
-export default UsersDetails;
+export default UsersDashboard;
 
 // Helper function to filter users based on search query and filter type
 const filterUsers = (

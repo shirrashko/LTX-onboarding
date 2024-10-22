@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import UsersDetails from "./pages/usersDetails/UsersDetails.tsx";
-import UserProfile from "./pages/userProfile/UserProfile.tsx";
+import UsersDashboard from "./pages/users-dashboard/UsersDashboard.tsx";
+import UserProfile from "./pages/user-profile/UserProfile.tsx";
 import { fetchUsersSync } from "./usersClientService.ts";
 import { FetchState } from "./types/fetchUsersState";
 import "./App.css";
@@ -30,7 +30,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<UsersDetails />} />
+        <Route path="/" element={<UsersDashboard />} />
         <Route path="/user-profile/:id" element={<UserProfile />} />
       </Routes>
     </Router>

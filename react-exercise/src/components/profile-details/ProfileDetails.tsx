@@ -39,7 +39,7 @@ function ProfileDetails({ user }: ProfileDetailsProps) {
         src={user.image || defaultProfilePicture}
         alt={`${user.firstName} ${user.lastName}'s profile picture`}
       />
-      <div className="user-details">
+      <div className="user-dashbord">
         <h2 className="user-name">
           {user.firstName} {user.lastName}
         </h2>
