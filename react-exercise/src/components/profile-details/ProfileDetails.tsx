@@ -1,7 +1,7 @@
 import "./ProfileDetails.scss";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
 import EditProfileForm from "../edit-profile-form/EditProfileForm.tsx";
-import { updateUser } from "../../stores/usersStore.ts";
+import { updateUserSync } from "../../usersClientService.ts";
 import { useState } from "react";
 import { User } from "../../types/user.ts";
 
@@ -18,7 +18,7 @@ function ProfileDetails({ user }: ProfileDetailsProps) {
   };
 
   const handleSaveClick = (updatedUser: User) => {
-    updateUser(updatedUser);
+    updateUserSync(updatedUser);
     setIsEditing(false);
     console.log("Saved user:", updatedUser);
   };
