@@ -1,6 +1,6 @@
 import "./ProfileDetails.scss";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
-import EditProfileForm from "../edit-profile-form/EditProfileForm.tsx";
+import EditProfileForm from "../user-form/UserForm.tsx";
 import { updateUserSync } from "../../usersClientService.ts";
 import { useState } from "react";
 import { User } from "../../types/user.ts";
