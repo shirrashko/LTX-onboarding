@@ -7,7 +7,7 @@ import UserTable from "../../components/user-table/UserTable.tsx";
 import { User } from "../../types/user.ts";
 import { FilterButtons } from "../../components/filter-buttons/FilterButtons.tsx";
 import { FilterType } from "../../types/filter.ts";
-import "./UsersDetails.scss";
+import "./UsersDashboard.scss";
 import { useUsersStore } from "../../stores/usersStore.ts";
 
 function UsersDetails() {
@@ -32,9 +32,9 @@ function UsersDetails() {
   // Filter users using the helper function
   const filteredUsers = filterUsers(users, searchQuery, activeFilter);
   return (
-    <div className="user-details-page">
+    <div className="user-dashboard-page">
       <Topper />
-      <div className="user-details">
+      <div className="user-dashboard">
         <div className="search-users">
           Search users
           <Search

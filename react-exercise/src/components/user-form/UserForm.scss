@@ -1,4 +1,6 @@
-.edit-profile-form {
+.user-form {
+  font-family: "Brown LL";
+
   form {
     display: flex;
     flex-direction: column;
@@ -16,6 +18,7 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       margin-left: 8px;
+      font-family:'Gill Sans';
     }
 
     .form-buttons {
