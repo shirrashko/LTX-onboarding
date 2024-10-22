@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { setUsers } from "./stores/usersStore.ts";
 import UsersDetails from "./pages/usersDetails/UsersDetails.tsx";
 import UserProfile from "./pages/userProfile/UserProfile.tsx";
+import { fetchUsersSync } from "./usersClientService.ts";
 import { FetchState } from "./types/fetchUsersState";
 import "./App.css";
 import { enableMapSet } from "immer";
@@ -16,25 +16,11 @@ function App() {
   });
 
   useEffect(() => {
-    setFetchState({ type: "progress" });
-    fetch("http://localhost:4000/users")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to fetch users");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setUsers(data);
-        setFetchState({ type: "success" });
-      })
-      .catch((error) => {
-        console.error("Error fetching users:", error);
-        setFetchState({
-          type: "failure",
-          errorMessage: "Failed to fetch users. Please try again later.",
-        });
-      });
+    fetchUsersSync(
+      () => setFetchState({ type: "progress" }),
+      () => setFetchState({ type: "success" }),
+      (errorMessage) => setFetchState({ type: "failure", errorMessage })
+    );
   }, []);
 
   if (fetchState.type === "progress") {
