@@ -6,7 +6,7 @@ interface UserFormProps {
   user: User;
   onSave: (updatedUser: User) => void;
   onCancel: () => void;
-  formTitle?: string; // Optional prop to customize form title
+  formTitle?: string;
 }
 
 const editableFields = [
@@ -31,12 +31,12 @@ const setNestedValue = (obj: any, path: string, value: any) => {
   if (deep && last) deep[last] = value;
 };
 
-const UserForm = ({
+function UserForm({
   user,
   onSave,
   onCancel,
   formTitle = "User Form",
-}: UserFormProps) => {
+}: UserFormProps) {
   const [formData, setFormData] = useState(user);
 
   const handleInputChange = (key: string, value: string | number) => {
@@ -90,6 +90,6 @@ const UserForm = ({
       </form>
     </div>
   );
-};
+}
 
 export default UserForm;
