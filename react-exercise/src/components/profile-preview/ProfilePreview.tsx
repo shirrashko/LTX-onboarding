@@ -1,37 +1,13 @@
 import "./ProfilePreview.scss";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
-import { updateUser } from "../../usersClientService.ts";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { User } from "../../types/user.ts";
-import UserForm from "../user-form/UserForm.tsx";
 
-interface ProfileDetailsProps {
+interface ProfilePreviewProps {
   user: User;
 }
-function ProfilePreview({ user }: ProfileDetailsProps) {
-  const [isEditing, setIsEditing] = useState(false);
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-  const handleCancelClick = () => {
-    setIsEditing(false);
-  };
 
-  const handleSaveClick = (updatedUser: User) => {
-    updateUser(updatedUser);
-    setIsEditing(false);
-    console.log("Saved user:", updatedUser);
-  };
-
-  if (isEditing) {
-    return (
-      <UserForm
-        user={user}
-        onSave={handleSaveClick}
-        onCancel={handleCancelClick}
-      />
-    );
-  }
+function ProfilePreview({ user }: ProfilePreviewProps) {
   return (
     <div className="profile-preview">
       <img
@@ -48,11 +24,12 @@ function ProfilePreview({ user }: ProfileDetailsProps) {
           {user.address.country}
         </span>
         <span>{user.email}</span>
-        <button className="edit-button" onClick={handleEditClick}>
-          Edit
-        </button>
+        <Link to={`/upsert-user/${user.id}`} className="edit-profile">
+          <button className="edit-button">Edit</button>
+        </Link>
       </div>
     </div>
   );
 }
+
 export default ProfilePreview;

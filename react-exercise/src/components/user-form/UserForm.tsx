@@ -61,7 +61,7 @@ function UserForm({
 
   return (
     <div className="user-form">
-      <h2>{formTitle}</h2>
+      <h2 className="form-title">{formTitle}</h2>
       <form>
         {editableFields.map(({ key, label, type }) => (
           <label key={key}>
