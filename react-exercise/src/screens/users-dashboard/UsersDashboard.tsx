@@ -9,7 +9,6 @@ import { FilterButtons } from "../../components/filter-buttons/FilterButtons.tsx
 import { FilterType } from "../../types/filter.ts";
 import "./UsersDashboard.scss";
 import { useUsersStore } from "../../stores/usersStore.ts";
-import RemoveUser from "../../components/remove-user/RemoveUser.tsx";
 
 function UsersDetails() {
   const users = useUsersStore((state) => state.users);
@@ -58,10 +57,7 @@ function UsersDetails() {
           {isGridView ? (
             <div className="card-mode">
               {filteredUsers.map((user) => (
-                <>
-                  <CreatorCard key={user.id} creatorData={user} />
-                  <RemoveUser userId={user.id} />
-                </>
+                <CreatorCard key={user.id} creatorData={user} />
               ))}
             </div>
           ) : (

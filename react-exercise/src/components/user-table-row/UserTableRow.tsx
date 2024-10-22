@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { User } from "../../types/user";
+import RemoveUser from "../remove-user/RemoveUser";
+
 type RowProps = {
   user: User;
 };
@@ -25,6 +27,7 @@ function UserTableRow({ user }: RowProps) {
       <td className="user-info">
         {user.address.city}, {user.address.state}
       </td>
+      <RemoveUser userId={user.id} />
     </tr>
   );
 }

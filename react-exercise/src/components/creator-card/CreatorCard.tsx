@@ -2,6 +2,7 @@ import { User } from "../../types/user.ts";
 import "./CreatorCard.scss";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
 import { Link } from "react-router-dom";
+import RemoveUser from "../remove-user/RemoveUser.tsx";
 
 interface CreatorCardProps {
   creatorData: User;
@@ -30,10 +31,10 @@ function CreatorCard({ creatorData }: CreatorCardProps) {
           </span>
         </div>
         <span className="creator-contact-email">{creatorData.email}</span>
-
         <Link to={`/user-profile/${creatorData.id}`}>
           <button className="view-details-button">Details</button>
         </Link>
+        <RemoveUser userId={creatorData.id} />
       </div>
     </div>
   );
