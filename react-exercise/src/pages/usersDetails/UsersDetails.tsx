@@ -9,6 +9,9 @@ import { FilterButtons } from "../../components/filter-buttons/FilterButtons.tsx
 import { FilterType } from "../../types/filter.ts";
 import "./UsersDetails.scss";
 import { useUsersStore } from "../../stores/usersStore.ts";
+import UserForm from "../../components/user-form/UserForm.tsx";
+import { addUserSync } from "../../usersClientService.ts";
+import { v4 as uuidv4 } from "uuid";
 
 function UsersDetails() {
   const users = useUsersStore((state) => state.users);
@@ -16,21 +19,41 @@ function UsersDetails() {
   const [isGridView, setIsGridView] = useState(true);
   const [activeFilter, setActiveFilter] = useState<FilterType>("Cities");
   const [searchQuery, setSearchQuery] = useState("");
+
+  const [isFormOpen, setIsFormOpen] = useState(false); // Track if the form is open
+
+  const handleAddUser = () => {
+    setIsFormOpen(true); // Open form for adding new user
+  };
+
+  const handleSave = async (newUser: User) => {
+    await addUserSync(newUser); // Add new user
+    setIsFormOpen(false); // Close form after adding user
+  };
+
+  const handleCancel = () => {
+    setIsFormOpen(false); // Close form without saving
+  };
+
   // Handle grid toggle
   const handleToggle = (view: boolean) => {
     setIsGridView(view);
   };
+
   // Handle filter click (reset searchQuery when changing filters)
   const handleFilterClick = (filter: FilterType) => {
     setActiveFilter(filter);
     setSearchQuery(""); // Reset search input when filter is switched
   };
+
   // Clear search input
   const handleClearSearch = () => {
     setSearchQuery("");
   };
+
   // Filter users using the helper function
   const filteredUsers = filterUsers(users, searchQuery, activeFilter);
+
   return (
     <div className="user-details-page">
       <Topper />
@@ -59,6 +82,34 @@ function UsersDetails() {
               {filteredUsers.map((user) => (
                 <CreatorCard key={user.id} creatorData={user} />
               ))}
+              <button className="add-user-button" onClick={handleAddUser}>
+                Add User
+              </button>
+              {isFormOpen && (
+                <UserForm
+                  user={{
+                    id: Number(uuidv4()),
+                    firstName: "",
+                    lastName: "",
+                    age: 0,
+                    email: "",
+                    address: {
+                      city: "",
+                      state: "",
+                      country: "",
+                      postalCode: "",
+                    },
+                    phone: "",
+                    gender: "",
+                    username: "",
+                    password: "",
+                    birthDate: "",
+                    image: "",
+                  }} // Empty user for adding a new user
+                  onSave={handleSave}
+                  onCancel={handleCancel}
+                />
+              )}
             </div>
           ) : (
             <div className="list-mode">
