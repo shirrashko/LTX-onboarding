@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import Topper from "../../components/topper/Topper";
-import ProfileDetails from "../../components/profile-details/ProfileDetails.tsx";
+import ProfilePreview from "../../components/profile-preview/ProfilePreview.tsx";
 import Tabs from "../../components/tabs/Tabs.tsx";
 import backArrowIcon from "../../assets/back-arrow-icon.svg";
 import "./UserProfile.scss";
@@ -28,7 +28,7 @@ function UserProfile() {
         </Link>
         <div className="page-content">
           <div className="profile-section">
-            <ProfileDetails user={user} />
+            <ProfilePreview user={user} />
             <Tabs user={user} />
           </div>
         </div>

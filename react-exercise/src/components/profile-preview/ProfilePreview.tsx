@@ -1,4 +1,4 @@
-import "./ProfileDetails.scss";
+import "./ProfilePreview.scss";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
 import { updateUser } from "../../usersClientService.ts";
 import { useState } from "react";
@@ -8,7 +8,7 @@ import UserForm from "../user-form/UserForm.tsx";
 interface ProfileDetailsProps {
   user: User;
 }
-function ProfileDetails({ user }: ProfileDetailsProps) {
+function ProfilePreview({ user }: ProfileDetailsProps) {
   const [isEditing, setIsEditing] = useState(false);
   const handleEditClick = () => {
     setIsEditing(true);
@@ -33,7 +33,7 @@ function ProfileDetails({ user }: ProfileDetailsProps) {
     );
   }
   return (
-    <div className="profile-details">
+    <div className="profile-preview">
       <img
         className="profile-image"
         src={user.image || defaultProfilePicture}
@@ -55,4 +55,4 @@ function ProfileDetails({ user }: ProfileDetailsProps) {
     </div>
   );
 }
-export default ProfileDetails;
+export default ProfilePreview;
