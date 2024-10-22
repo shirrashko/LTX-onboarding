@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import UsersDetails from "./pages/usersDetails/UsersDetails.tsx";
-import UserProfile from "./pages/userProfile/UserProfile.tsx";
+import UsersDetails from "./screens/users-dashboard/UsersDashboard.tsx";
+import UserProfile from "./screens/user-profile/UserProfile.tsx";
 import { fetchUsers } from "./usersClientService.ts";
 import { FetchState } from "./types/fetchUsersState";
 import "./App.css";
