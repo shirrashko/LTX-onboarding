@@ -1,9 +1,9 @@
 import "./ProfileDetails.scss";
 import defaultProfilePicture from "../../assets/default-profile-picture.svg";
-import EditProfileForm from "../edit-profile-form/EditProfileForm.tsx";
 import { updateUserSync } from "../../usersClientService.ts";
 import { useState } from "react";
 import { User } from "../../types/user.ts";
+import UserForm from "../user-form/userForm.tsx";
 
 interface ProfileDetailsProps {
   user: User;
@@ -25,10 +25,11 @@ function ProfileDetails({ user }: ProfileDetailsProps) {
 
   if (isEditing) {
     return (
-      <EditProfileForm
+      <UserForm
         user={user}
         onSave={handleSaveClick}
         onCancel={handleCancelClick}
+        formTitle="Edit Profile"
       />
     );
   }

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { User } from "../../types/user.ts";
-import "./EditPorfileForm.scss";
+import "./UserForm.scss";
 
-interface EditProfileFormProps {
+interface UserFormProps {
   user: User;
   onSave: (updatedUser: User) => void;
   onCancel: () => void;
+  formTitle?: string; // Optional prop to customize form title
 }
 
 const editableFields = [
@@ -30,38 +31,44 @@ const setNestedValue = (obj: any, path: string, value: any) => {
   if (deep && last) deep[last] = value;
 };
 
-const EditProfileForm = ({ user, onSave, onCancel }: EditProfileFormProps) => {
-  const [editData, setEditData] = useState(user);
+const UserForm = ({
+  user,
+  onSave,
+  onCancel,
+  formTitle = "User Form",
+}: UserFormProps) => {
+  const [formData, setFormData] = useState(user);
 
   const handleInputChange = (key: string, value: string | number) => {
-    const updatedData = { ...editData };
+    const updatedData = { ...formData };
     setNestedValue(updatedData, key, value);
-    setEditData(updatedData);
+    setFormData(updatedData);
   };
 
   const handleSaveClick = () => {
-    if (!/\S+@\S+\.\S+/.test(editData.email)) {
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
       alert("Please enter a valid email.");
       return;
     }
 
-    if (editData.age <= 0) {
+    if (formData.age <= 0) {
       alert("Please enter a valid age.");
       return;
     }
 
-    onSave(editData);
+    onSave(formData);
   };
 
   return (
-    <div className="edit-profile-form">
+    <div className="user-form">
+      <h2>{formTitle}</h2>
       <form>
         {editableFields.map(({ key, label, type }) => (
           <label key={key}>
             {label}:
             <input
               type={type}
-              value={getNestedValue(editData, key)}
+              value={getNestedValue(formData, key)}
               onChange={(e) =>
                 handleInputChange(
                   key,
@@ -85,4 +92,4 @@ const EditProfileForm = ({ user, onSave, onCancel }: EditProfileFormProps) => {
   );
 };
 
-export default EditProfileForm;
+export default UserForm;
