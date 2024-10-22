@@ -1,12 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { User } from "../../types/user";
-
 type RowProps = {
   user: User;
 };
-
 function UserTableRow({ user }: RowProps) {
+  const navigate = useNavigate();
+  const handleRowClick = () => {
+    navigate(`/user-profile/${user.id}`);
+  };
   return (
-    <tr className="user-row">
+    <tr
+      className="user-row"
+      onClick={handleRowClick}
+      style={{ cursor: "pointer" }}
+    >
       <td className="user-identifier">
         <img className="user-profile-picture" src={user.image} alt="Profile" />
         <span className="user-name">
@@ -21,5 +28,4 @@ function UserTableRow({ user }: RowProps) {
     </tr>
   );
 }
-
 export default UserTableRow;
