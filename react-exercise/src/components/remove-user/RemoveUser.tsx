@@ -3,7 +3,7 @@ import "./RemoveUser.scss";
 import Swal from "sweetalert2";
 
 interface RemoveUserProps {
-  userId: number;
+  userId: string;
 }
 
 function RemoveUser({ userId }: RemoveUserProps) {
@@ -18,7 +18,7 @@ function RemoveUser({ userId }: RemoveUserProps) {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        removeUser(userId.toString());
+        removeUser(userId);
         Swal.fire("Deleted!", "The user has been removed.", "success");
       }
     });
