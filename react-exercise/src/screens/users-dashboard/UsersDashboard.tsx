@@ -9,6 +9,7 @@ import { FilterButtons } from "../../components/filter-buttons/FilterButtons.tsx
 import { FilterType } from "../../types/filter.ts";
 import "./UsersDashboard.scss";
 import { useUsersStore } from "../../stores/usersStore.ts";
+import AddUser from "../../components/add-user/AddUser.tsx";
 
 function UsersDetails() {
   const users = useUsersStore((state) => state.users);
@@ -67,6 +68,7 @@ function UsersDetails() {
           )}
         </div>
       </div>
+      <AddUser />
     </div>
   );
 }
