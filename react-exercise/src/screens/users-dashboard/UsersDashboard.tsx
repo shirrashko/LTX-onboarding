@@ -17,19 +17,23 @@ function UsersDetails() {
   const [isGridView, setIsGridView] = useState(true);
   const [activeFilter, setActiveFilter] = useState<FilterType>("Cities");
   const [searchQuery, setSearchQuery] = useState("");
+
   // Handle grid toggle
   const handleToggle = (view: boolean) => {
     setIsGridView(view);
   };
+
   // Handle filter click (reset searchQuery when changing filters)
   const handleFilterClick = (filter: FilterType) => {
     setActiveFilter(filter);
     setSearchQuery(""); // Reset search input when filter is switched
   };
+
   // Clear search input
   const handleClearSearch = () => {
     setSearchQuery("");
   };
+
   // Filter users using the helper function
   const filteredUsers = filterUsers(users, searchQuery, activeFilter);
   return (
@@ -44,7 +48,7 @@ function UsersDetails() {
             onClear={handleClearSearch}
           />
         </div>
-        <div className="results-options">
+        <div className="results-section">
           <FilterButtons
             activeFilter={activeFilter}
             onFilterClick={handleFilterClick}
