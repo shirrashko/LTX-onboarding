@@ -72,7 +72,9 @@ function UsersDetails() {
           )}
         </div>
       </div>
-      <AddUser />
+      <div className="add-user">
+        <AddUser />
+      </div>
     </div>
   );
 }

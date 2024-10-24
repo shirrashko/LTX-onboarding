@@ -39,7 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={<UsersDetails />} />
         <Route path="/user-profile/:id" element={<UserProfile />} />
-        <Route path="/upsert-user/:id" element={<UserDetailsForm />} />
+        <Route path="/upsert-user/:id?" element={<UserDetailsForm />} />
       </Routes>
     </Router>
   );

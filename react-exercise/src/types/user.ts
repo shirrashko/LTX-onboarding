@@ -18,7 +18,6 @@ export interface Address {
   city: string;
   state: string;
   country: string;
-  postalCode: string;
 }
 
 export interface Company {

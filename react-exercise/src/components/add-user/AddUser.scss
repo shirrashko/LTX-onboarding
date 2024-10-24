@@ -14,6 +14,9 @@
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.3s ease; // Smooth transitions for hover effects
       text-transform: uppercase;
+      font-family: "Brown LL";
+      width: 200px;
+      height: 40px;
   
       &:hover {
         background-color: #007bff;

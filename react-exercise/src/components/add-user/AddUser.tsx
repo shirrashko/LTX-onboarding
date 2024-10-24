@@ -7,34 +7,8 @@ function AddUser() {
   const navigate = useNavigate();
 
   const handleAddOnClick = () => {
-    console.log("Add User button clicked");
-
-    // Generate a UUID for the new user
-    const userId = uuidv4();
-
-    // Create a new user object with empty fields for now
-    addUser({
-      id: userId,
-      firstName: "",
-      lastName: "",
-      age: 0,
-      email: "",
-      address: {
-        city: "",
-        state: "",
-        country: "",
-        postalCode: "",
-      },
-      phone: "",
-      gender: "",
-      username: "",
-      password: "",
-      birthDate: "",
-      image: "",
-    });
-
     // Navigate to the upsert-user page with the generated userId
-    navigate(`/upsert-user/${userId}`);
+    navigate("/upsert-user");
   };
 
   return (

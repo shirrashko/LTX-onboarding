@@ -1973,25 +1973,6 @@
       },
       "phone": "0526549025",
       "gender": "female"
-    },
-    {
-      "id": "9f258a0e-b2c8-425a-aa7e-0edd581a5df0",
-      "firstName": "",
-      "lastName": "",
-      "age": 0,
-      "email": "",
-      "address": {
-        "city": "",
-        "state": "",
-        "country": "",
-        "postalCode": ""
-      },
-      "phone": "",
-      "gender": "",
-      "username": "",
-      "password": "",
-      "birthDate": "",
-      "image": ""
     }
   ],
   "total": 208,
