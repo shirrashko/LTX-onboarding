@@ -11,6 +11,10 @@
         padding: 16px;
         width: 277px;
         height: 32px;
+        
+        .user-name {
+            font-family: "Brown LL";
+        }
 
         /* text */
         color: var(--text-primary, rgba(0, 0, 0, 0.87));
