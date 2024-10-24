@@ -1,4 +1,4 @@
-import { fetchUsers as fetchUsersOnServer, createUser, updateUser as updateUserOnServer, deleteUser } from './usersDBClient';
+import { fetchUsers as fetchUsersOnServer, createUser as createUserOnServer, updateUser as updateUserOnServer, deleteUser as deleteUserOnServer } from './usersDBClient';
 import { addUser as addUserOnStore, setUsers as setUsersOnStore, updateUser as updateUserOnStore, removeUser as removeUserOnStore} from './stores/usersStore';
 import { User } from './types/user';
 
@@ -11,8 +11,8 @@ interface FetchUsersStateCallbacks {
 export const fetchUsers = async ({ onProgress, onSuccess, onFailure }: FetchUsersStateCallbacks) => {
   try {
     onProgress();
-    const users = await fetchUsersOnServer(); // Fetch users from the server
-    setUsersOnStore(users); // Set users in Zustand store
+    const users = await fetchUsersOnServer();
+    setUsersOnStore(users);
     onSuccess();
   } catch (error) {
     console.error('Failed to fetch and sync users:', error);
@@ -22,8 +22,8 @@ export const fetchUsers = async ({ onProgress, onSuccess, onFailure }: FetchUser
 
 export const addUser = async (newUser: User) => {
   try {
-    const createdUser = await createUser(newUser); // Add user on the server
-    addUserOnStore(createdUser); // Update Zustand store
+    const createdUser = await createUserOnServer(newUser);
+    addUserOnStore(createdUser);
   } catch (error) {
     console.error('Failed to add user:', error);
   }
@@ -31,8 +31,8 @@ export const addUser = async (newUser: User) => {
 
 export const updateUser = async (updatedUser: User) => {
   try {
-    const user = await updateUserOnServer(updatedUser); // Update user on the server
-    updateUserOnStore(user); // Update Zustand store
+    const user = await updateUserOnServer(updatedUser);
+    updateUserOnStore(user);
   } catch (error) {
     console.error('Failed to update user:', error);
   }
@@ -40,8 +40,8 @@ export const updateUser = async (updatedUser: User) => {
 
 export const removeUser = async (userId: string) => {
   try {
-    await deleteUser(userId); // Delete user on the server
-    removeUserOnStore(userId); // Update Zustand store
+    await deleteUserOnServer(userId);
+    removeUserOnStore(userId);
   } catch (error) {
     console.error('Failed to remove user:', error);
   }
