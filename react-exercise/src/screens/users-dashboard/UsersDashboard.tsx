@@ -62,7 +62,7 @@ function UsersDetails() {
           {isGridView ? (
             <div className="card-mode">
               {filteredUsers.map((user) => (
-                <CreatorCard key={user.id} creatorData={user} />
+                <CreatorCard key={user.id} user={user} />
               ))}
             </div>
           ) : (

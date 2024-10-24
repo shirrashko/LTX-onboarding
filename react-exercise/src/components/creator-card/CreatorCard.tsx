@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import RemoveUser from "../remove-user/RemoveUser.tsx";
 
 interface CreatorCardProps {
-  creatorData: User;
+  user: User;
 }
 
-function CreatorCard({ creatorData }: CreatorCardProps) {
+function CreatorCard({ user: creatorData }: CreatorCardProps) {
   return (
     <div className="creator-card">
       <div className="creator-card-body">
