@@ -11,14 +11,14 @@ export const useUsersStore = create<UsersState>(() => ({
 }));
 
 export const setUsers = (users: User[]) => {
-  const usersMap = new Map(users.map((user) => [user.id.toString(), user]));
+  const usersMap = new Map(users.map((user) => [user.id, user]));
   useUsersStore.setState({ users: usersMap });
 };
 
 export const updateUser = (updatedUser: User) => {
   useUsersStore.setState(
     produce((state: UsersState) => {
-      state.users.set(updatedUser.id.toString(), updatedUser);
+      state.users.set(updatedUser.id, updatedUser);
     })
   );
 };
@@ -26,7 +26,7 @@ export const updateUser = (updatedUser: User) => {
 export const addUser = (newUser: User) => {
   useUsersStore.setState(
     produce((state: UsersState) => {
-      state.users.set(newUser.id.toString(), newUser);
+      state.users.set(newUser.id, newUser);
     })
   );
 };

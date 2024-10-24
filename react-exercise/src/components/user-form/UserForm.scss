@@ -1,5 +1,5 @@
 .user-form {
-  font-family: "Brown LL";
+  font-family: "Brown LL"; // Ensure consistent font family across the form
 
   form {
     display: flex;
@@ -10,6 +10,7 @@
       font-size: 14px;
       font-weight: 500;
       margin-bottom: 8px;
+      color: #333;
     }
 
     input {
@@ -17,8 +18,15 @@
       font-size: 14px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      margin-top: 4px; 
+      font-family: 'Brown LL';
       margin-left: 8px;
-      font-family:'Gill Sans';
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: #007bff;
+        outline: none;
+      }
     }
 
     .form-buttons {
@@ -50,4 +58,29 @@
       }
     }
   }
+
+  .error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+    padding: 5px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+
+  .toggle-optional-fields {
+    background-color: rgb(213, 231, 153);
+    color: #333;
+    font-family: 'Brown LL';
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 16px;
+    width: 250px;
+    align-self: center;
+  }
+  
 }

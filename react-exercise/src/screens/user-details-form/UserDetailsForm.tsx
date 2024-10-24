@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Topper from "../../components/topper/Topper";
 import UserForm from "../../components/user-form/UserForm.tsx";
-import { updateUser, useUsersStore } from "../../stores/usersStore.ts";
+import { updateUser, addUser, useUsersStore } from "../../stores/usersStore.ts"; // Assuming `addUser` is defined in your store
 import "./UserDetailsForm.scss";
 import { User } from "../../types/user.ts";
+import { v4 as uuidv4 } from "uuid";
 
 function UserDetailsForm() {
   const { id } = useParams();
@@ -11,25 +12,45 @@ function UserDetailsForm() {
   const users = useUsersStore((state) => state.users);
   const user = id ? users.get(id) : undefined;
 
-  if (!user) {
-    return <p>User not found</p>;
-  }
+  const isNewUser = !id; // Determine if we are adding a new user (no id)
 
   const handleSaveClick = (updatedUser: User) => {
-    updateUser(updatedUser);
-    console.log("Saved user:", updatedUser);
-    navigate(`/user-profile/${id}`);
+    if (isNewUser) {
+      // Generate a UUID and add the user when the form is submitted
+      const newUser = { ...updatedUser, id: uuidv4() };
+      addUser(newUser); // Save the new user
+    } else {
+      updateUser(updatedUser); // Update the existing user
+    }
+    navigate(`/user-profile/${id}`); // Go to the user's profile
   };
 
   const handleCancelClick = () => {
-    navigate(`/user-profile/${id}`);
+    if (isNewUser) {
+      navigate("/"); // If in add mode, go back to the main user list
+    } else {
+      navigate(`/user-profile/${id}`); // If in edit mode, go back to the user's profile
+    }
   };
 
   return (
     <div className="user-details-form">
       <Topper />
       <UserForm
-        user={user}
+        user={
+          user || {
+            id: "",
+            firstName: "",
+            lastName: "",
+            age: 0,
+            email: "",
+            address: { city: "", state: "", country: "" },
+            phone: "",
+            gender: "",
+            birthDate: "",
+            image: "",
+          }
+        }
         onSave={handleSaveClick}
         onCancel={handleCancelClick}
       />

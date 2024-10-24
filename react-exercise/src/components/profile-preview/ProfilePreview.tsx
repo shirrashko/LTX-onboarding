@@ -24,7 +24,7 @@ function ProfilePreview({ user }: ProfilePreviewProps) {
           {user.address.country}
         </span>
         <span>{user.email}</span>
-        <Link to={`/upsert-user/${user.id}`} className="edit-profile">
+        <Link to={`/upsert-user/${user.id}`} className="edit-profile-link">
           <button className="edit-button">Edit</button>
         </Link>
       </div>

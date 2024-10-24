@@ -25,7 +25,7 @@
         letter-spacing: -0.75px;
       }
   
-      .results-options {
+      .results-section {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -56,5 +56,10 @@
           flex-wrap: wrap;
       }
     }
+  }
+
+  .add-user {
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
 }
