@@ -1959,20 +1959,6 @@
         "network": "Ethereum (ERC20)"
       },
       "role": "user"
-    },
-    {
-      "id": "",
-      "firstName": "Shir",
-      "lastName": "Rashkovits",
-      "age": 25,
-      "email": "shirashko@gmail.com",
-      "address": {
-        "city": "Jerusalem",
-        "state": "Israel",
-        "country": "Israel"
-      },
-      "phone": "0526549025",
-      "gender": "female"
     }
   ],
   "total": 208,
