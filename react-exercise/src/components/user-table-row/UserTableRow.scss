@@ -3,6 +3,7 @@
     height: 52px;
     border-bottom: 1px solid var(--semantic-fg-neutral-secondary, #E6E7E9);
     background: var(--semantic-bg-secondary, #FFF);
+    cursor: pointer;
 
     .user-identifier {
         display: flex;

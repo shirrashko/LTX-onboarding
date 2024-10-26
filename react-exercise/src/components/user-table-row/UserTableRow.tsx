@@ -14,7 +14,7 @@ function UserTableRow({ user }: RowProps) {
   };
 
   return (
-    <tr className="user-row" style={{ cursor: "pointer" }}>
+    <tr className="user-row">
       <td className="user-identifier" onClick={handleTDClick}>
         <img className="user-profile-picture" src={user.image} alt="Profile" />
         <span className="user-name">

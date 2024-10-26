@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { User } from "../../types/user.ts";
 import "./UserForm.scss";
-import ImageUploader from "../image-uploader/ImageUploader.tsx"; // Import the new ImageUploader
+import ImageUploader from "../image-uploader/ImageUploader.tsx";
 
 interface UserFormProps {
   user: User;

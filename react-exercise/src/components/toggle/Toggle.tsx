@@ -7,7 +7,7 @@ interface ToggleProps {
   onToggle: (view: boolean) => void;
 }
 
-function Toggle({ isGridView, onToggle }: ToggleProps): JSX.Element {
+function Toggle({ isGridView, onToggle }: ToggleProps) {
   const handleToggle = () => {
     onToggle(!isGridView);
   };

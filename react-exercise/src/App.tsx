@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { enableMapSet } from "immer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import UsersDetails from "./screens/users-dashboard/UsersDashboard.tsx";
+import UsersDashboard from "./screens/users-dashboard/UsersDashboard.tsx";
 import UserProfile from "./screens/user-profile/UserProfile.tsx";
 import { fetchUsers } from "./usersClientService.ts";
 import { FetchState } from "./types/fetchUsersState";
@@ -37,7 +37,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<UsersDetails />} />
+        <Route path="/" element={<UsersDashboard />} />
         <Route path="/user-profile/:id" element={<UserProfile />} />
         <Route path="/upsert-user/:id?" element={<UserDetailsForm />} />
       </Routes>

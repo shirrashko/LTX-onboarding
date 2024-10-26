@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Topper from "../../components/topper/Topper";
 import UserForm from "../../components/user-form/UserForm.tsx";
-import { updateUser, addUser, useUsersStore } from "../../stores/usersStore.ts"; // Assuming `addUser` is defined in your store
+import { updateUser, addUser, useUsersStore } from "../../stores/usersStore.ts";
 import "./UserDetailsForm.scss";
 import { User } from "../../types/user.ts";
 import { v4 as uuidv4 } from "uuid";
@@ -22,7 +22,7 @@ function UserDetailsForm() {
     } else {
       updateUser(updatedUser); // Update the existing user
     }
-    navigate(`/user-profile/${id}`); // Go to the user's profile
+    navigate(`/user-profile/${id}`);
   };
 
   const handleCancelClick = () => {

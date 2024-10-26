@@ -12,7 +12,7 @@
       font-weight: 500;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease; // Smooth transitions for hover effects
+      transition: background-color 0.3s ease, transform 0.3s ease;
       text-transform: uppercase;
       font-family: "Brown LL";
       width: 200px;
@@ -24,7 +24,7 @@
       }
   
       &:active {
-        background-color: #004494; // Even darker when the button is clicked
+        background-color: #004494;
         transform: translateY(0); // Remove the lift effect on click
       }
     }

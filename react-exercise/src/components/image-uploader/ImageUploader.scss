@@ -9,7 +9,7 @@
   
     &:hover {
       border-color: #007bff;
-      background-color: rgba(0, 123, 255, 0.05); /* Light blue on hover */
+      background-color: rgba(0, 123, 255, 0.05);
     }
   
     input[type="file"] {
@@ -30,11 +30,11 @@
   
   .dragging {
     border-color: #007bff;
-    background-color: rgba(0, 123, 255, 0.1); /* Light blue when dragging */
+    background-color: rgba(0, 123, 255, 0.1);
   }
   
   .profile-image {
-    width: 128px; /* Adjust size as needed */
+    width: 128px;
     height: 128px;
     border-radius: 50%;
     object-fit: cover;
@@ -46,7 +46,7 @@
     transition: border-color 0.3s ease-in-out;
     
     &:hover {
-      border-color: #007bff; /* Highlight on hover */
+      border-color: #007bff;
     }
   }
   

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ImageUploader.scss";
+import clsx from "clsx";
 
 interface ImageUploaderProps {
   imageUrl: string;
@@ -45,7 +46,7 @@ function ImageUploader({ imageUrl, onImageUpload }: ImageUploaderProps) {
 
   return (
     <div
-      className={`drop-area ${dragging ? "dragging" : ""}`}
+      className={clsx("drop-area", dragging && "dragging")}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
@@ -53,7 +54,7 @@ function ImageUploader({ imageUrl, onImageUpload }: ImageUploaderProps) {
       <p>Drag & drop an image here or click to upload</p>
       <input type="file" accept="image/*" onChange={handleFileInputChange} />
       {imageUrl && (
-        <img src={imageUrl} alt="Profile Preview" className="profile-image" />
+        <img src={imageUrl} alt="Profile Image" className="profile-image" />
       )}
     </div>
   );

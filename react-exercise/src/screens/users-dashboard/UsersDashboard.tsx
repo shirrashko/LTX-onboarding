@@ -11,7 +11,7 @@ import "./UsersDashboard.scss";
 import { useUsersStore } from "../../stores/usersStore.ts";
 import AddUser from "../../components/add-user/AddUser.tsx";
 
-function UsersDetails() {
+function UsersDashboard() {
   const users = useUsersStore((state) => state.users);
 
   const [isGridView, setIsGridView] = useState(true);
@@ -78,7 +78,7 @@ function UsersDetails() {
     </div>
   );
 }
-export default UsersDetails;
+export default UsersDashboard;
 
 // Helper function to filter users based on search query and filter type
 const filterUsers = (
