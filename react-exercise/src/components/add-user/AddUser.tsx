@@ -5,7 +5,6 @@ function AddUser() {
   const navigate = useNavigate();
 
   const handleAddOnClick = () => {
-    // Navigate to the upsert-user page with the generated userId
     navigate("/upsert-user");
   };
 
