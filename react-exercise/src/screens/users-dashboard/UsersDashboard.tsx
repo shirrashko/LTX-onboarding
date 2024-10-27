@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Toggle from "../../components/toggle/Toggle.tsx";
 import Search from "../../components/search/Search.tsx";
 import Topper from "../../components/topper/Topper.tsx";
@@ -18,6 +18,29 @@ function UsersDashboard() {
   const [activeFilter, setActiveFilter] = useState<FilterType>("Cities");
   const [searchQuery, setSearchQuery] = useState("");
 
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const savedUserId = localStorage.getItem("selectedUserId");
+    if (savedUserId) {
+      setSelectedUserId(savedUserId);
+      localStorage.removeItem("selectedUserId");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedUserId && scrollRef.current) {
+      // Use requestAnimationFrame to delay the scroll until the next frame
+      requestAnimationFrame(() => {
+        scrollRef.current?.scrollIntoView({
+          behavior: "auto", // Instant scroll
+          block: "center",
+        });
+      });
+    }
+  }, [selectedUserId]);
+
   // Handle grid toggle
   const handleToggle = (view: boolean) => {
     setIsGridView(view);
@@ -36,6 +59,7 @@ function UsersDashboard() {
 
   // Filter users using the helper function
   const filteredUsers = filterUsers(users, searchQuery, activeFilter);
+
   return (
     <div className="user-dashboard-page">
       <Topper />
@@ -62,7 +86,11 @@ function UsersDashboard() {
           {isGridView ? (
             <div className="card-mode">
               {filteredUsers.map((user) => (
-                <CreatorCard key={user.id} user={user} />
+                <CreatorCard
+                  key={user.id}
+                  user={user}
+                  ref={user.id === selectedUserId ? scrollRef : undefined} // Pass ref only to the selected user
+                />
               ))}
             </div>
           ) : (
@@ -78,6 +106,7 @@ function UsersDashboard() {
     </div>
   );
 }
+
 export default UsersDashboard;
 
 // Helper function to filter users based on search query and filter type
