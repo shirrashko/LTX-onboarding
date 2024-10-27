@@ -25,6 +25,9 @@ function UserTable({ users }: UserTableProps) {
             <th className="info-header" id="header-location">
               Location
             </th>
+            <th className="action-header" id="header-action">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>

@@ -1,0 +1,19 @@
+
+
+.remove-user-button {
+    background-color: rgb(237, 118, 118);
+    color: white;
+    border: none;
+    width: 130px;
+    height: 26px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    font-family: "Brown LL";
+    
+    &:hover {
+        background-color: rgb(239, 84, 84);
+    }
+}

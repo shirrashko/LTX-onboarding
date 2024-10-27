@@ -1,21 +1,15 @@
 export interface User {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
-  maidenName?: string;
   age: number;
   gender: string;
   email: string;
   phone: string;
-  username: string;
-  password: string;
   birthDate: string;
   image: string;
-  height?: number;
-  weight?: number;
-  eyeColor?: string;
   address: Address;
-  macAddress?: string;
+  company?: Company;
   university?: string;
   role?: string; // Like 'admin', 'moderator', etc.
 }
@@ -24,5 +18,10 @@ export interface Address {
   city: string;
   state: string;
   country: string;
-  postalCode: string;
+}
+
+export interface Company {
+  name: string;
+  title: string;
+  department: string;
 }

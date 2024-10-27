@@ -1,9 +1,7 @@
 .user-dashboard-page {
     display: flex;
     flex-direction: column;
-    height: 100%;
     background-color: #f8f9fa;
-    overflow-y: scroll;
   
     .user-dashboard {
       display: flex;
@@ -25,7 +23,7 @@
         letter-spacing: -0.75px;
       }
   
-      .results-options {
+      .results-section {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -56,5 +54,10 @@
           flex-wrap: wrap;
       }
     }
+  }
+
+  .add-user {
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
 }

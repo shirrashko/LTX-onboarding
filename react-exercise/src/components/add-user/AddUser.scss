@@ -1,0 +1,31 @@
+.add-user-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .add-user-button {
+      background-color: #4d9ef6;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-transform: uppercase;
+      font-family: "Brown LL";
+      width: 200px;
+      height: 40px;
+  
+      &:hover {
+        background-color: #007bff;
+        transform: translateY(-2px); // Slight lift effect on hover
+      }
+  
+      &:active {
+        background-color: #004494;
+        transform: translateY(0); // Remove the lift effect on click
+      }
+    }
+  }
